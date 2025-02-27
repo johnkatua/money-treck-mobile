@@ -1,0 +1,6 @@
+.expo/*
+.vscode/*
+node_modules/
+scripts/
+.expo-env*
+package-lock.json
