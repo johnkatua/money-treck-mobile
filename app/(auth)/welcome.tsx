@@ -20,24 +20,24 @@ const Welcome = () => {
             resizeMode="contain"
           />
         </View>
-      </View>
-      <View style={styles.footer}>
-        <View style={{ alignItems: 'center' }}>
-          <Typo size={30} fontWeight={'800'}>
-            Always take control
-          </Typo>
-          <Typo size={30} fontWeight={'800'}>
-            of your finances
-          </Typo>
-        </View>
-        <View style={{ alignItems: 'center', gap: 2 }}>
-          <Typo size={18}>Finances must be arranged to set a better</Typo>
-          <Typo size={18}>Lifestyle in future</Typo>
-        </View>
-        <View style={styles.buttonContainer}>
-          <Button>
-            <Typo>Get Started</Typo>
-          </Button>
+        <View style={styles.footer}>
+          <View style={{ alignItems: 'center' }}>
+            <Typo size={30} fontWeight={'800'}>
+              Always take control
+            </Typo>
+            <Typo size={30} fontWeight={'800'}>
+              of your finances
+            </Typo>
+          </View>
+          <View style={{ alignItems: 'center', gap: 2 }}>
+            <Typo size={18}>Finances must be arranged to set a better</Typo>
+            <Typo size={18}>Lifestyle in future</Typo>
+          </View>
+          <View style={styles.buttonContainer}>
+            <Button>
+              <Typo>Get Started</Typo>
+            </Button>
+          </View>
         </View>
       </View>
     </ScreenWrapper>
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     marginRight: spacingX._20,
   },
   footer: {
-    backgroundColor: colors.neutral800,
+    backgroundColor: colors.black,
     alignItems: 'center',
     paddingTop: verticalScale(30),
     paddingBottom: verticalScale(45),
