@@ -20,7 +20,20 @@ const Welcome = () => {
           />
         </View>
       </View>
-      <View style={styles.footer}></View>
+      <View style={styles.footer}>
+        <View style={{ alignItems: 'center' }}>
+          <Typo size={30} fontWeight={'800'}>
+            Always take control
+          </Typo>
+          <Typo size={30} fontWeight={'800'}>
+            of your finances
+          </Typo>
+        </View>
+        <View style={{ alignItems: 'center', gap: 2 }}>
+          <Typo size={18}>Finances must be arranged to set a better</Typo>
+          <Typo size={18}>Lifestyle in future</Typo>
+        </View>
+      </View>
     </ScreenWrapper>
   );
 };
@@ -52,11 +65,11 @@ const styles = StyleSheet.create({
     shadowColor: colors.white,
     shadowOffset: {
       width: 0,
-      height: -10,
+      height: 12,
     },
-    elevation: 10,
-    shadowRadius: 25,
-    shadowOpacity: 0.15,
+    shadowOpacity: 0.58,
+    shadowRadius: 16.0,
+    elevation: 24,
   },
   buttonContainer: {
     width: '100%',
