@@ -12,7 +12,16 @@ export const colors = {
   black: '#000',
   rose: '#ef4444',
   green: '#16a34a',
-  // neutral:
+  neutral50: 'oklch(0.985 0 0)',
+  neutral100: 'oklch(0.97 0 0)',
+  neutral200: 'oklch(0.922 0 0)',
+  neutral300: 'oklch(0.87 0 0)',
+  neutral400: 'oklch(0.708 0 0)',
+  neutral500: 'oklch(0.556 0 0)',
+  neutral600: 'oklch(0.439 0 0)',
+  neutral700: 'oklch(0.371 0 0)',
+  neutral800: 'oklch(0.269 0 0)',
+  neutral900: 'oklch(0.205 0 0)',
 };
 
 export const spacingX = {
