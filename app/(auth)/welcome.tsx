@@ -33,6 +33,7 @@ const Welcome = () => {
           <Typo size={18}>Finances must be arranged to set a better</Typo>
           <Typo size={18}>Lifestyle in future</Typo>
         </View>
+        <View style={styles.buttonContainer}></View>
       </View>
     </ScreenWrapper>
   );

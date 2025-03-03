@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { TextProps, TextStyle, ViewStyle } from 'react-native';
+import { TextProps, TextStyle, TouchableOpacityProps, ViewStyle } from 'react-native';
 
 type WrapperProps = {
   style?: ViewStyle;
@@ -19,3 +19,10 @@ export type TypoProps = {
   style?: TextStyle;
   textProps?: TextProps;
 };
+
+export interface CustomButtonProps extends TouchableOpacityProps {
+  style?: ViewStyle;
+  loading?: boolean;
+  children: ReactNode;
+  onPress?: () => void;
+}
