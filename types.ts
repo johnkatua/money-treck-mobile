@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { ViewStyle } from 'react-native';
+import { TextProps, TextStyle, ViewStyle } from 'react-native';
 
 type WrapperProps = {
   style?: ViewStyle;
@@ -10,3 +10,12 @@ type WrapperProps = {
 export type ScreenWrapperProps = WrapperProps;
 
 export type ModalWrapperProps = WrapperProps;
+
+export type TypoProps = {
+  size?: number;
+  color?: string;
+  fontWeight?: TextStyle['fontWeight'];
+  children: any | null;
+  style?: TextStyle;
+  textProps?: TextProps;
+};
