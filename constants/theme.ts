@@ -4,7 +4,7 @@ export const colors = {
   primary: 'oklch(84.93% 0.2073 128.85)',
   primaryLight: 'oklch(68.47% 0.1479 237.32)',
   primaryDark: 'oklch(50% 0.1193 242.75)',
-  text: 'oklch(100% 0 0)',
+  text: '#fff',
   textLight: 'oklch(92.19% 0 0)',
   textLighter: 'oklch(86.99% 0 0)',
   white: 'oklch(100% 0 0)',
