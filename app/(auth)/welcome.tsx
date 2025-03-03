@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import ScreenWrapper from '../../components/ScreenWrapper';
 import { colors, spacingX, spacingY } from '../../constants/theme';
@@ -10,9 +10,14 @@ const Welcome = () => {
     <ScreenWrapper>
       <View style={styles.contanier}>
         <View>
-          <TouchableOpacity>
+          <TouchableOpacity style={styles.loginButton}>
             <Typo fontWeight={'500'}>Login</Typo>
           </TouchableOpacity>
+          <Image
+            source={require('../../assets/images/welcome.png')}
+            style={styles.welcomeImage}
+            resizeMode="contain"
+          />
         </View>
       </View>
     </ScreenWrapper>
