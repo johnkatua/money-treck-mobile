@@ -1,9 +1,10 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import React from 'react';
+import React, { FC } from 'react';
 import { colors, radius } from '../constants/theme';
 import { verticalScale } from '../utils/styling';
+import { CustomButtonProps } from '../types';
 
-const Button = ({ style, onPress, children, loading = false }) => {
+const Button: FC<CustomButtonProps> = ({ style, onPress, children, loading = false }) => {
   if (loading) {
     return <View style={[styles.button, style, { backgroundColor: 'transparent' }]}></View>;
   }
