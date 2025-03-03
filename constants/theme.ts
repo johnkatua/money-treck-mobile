@@ -18,8 +18,8 @@ export const colors = {
   neutral400: 'oklch(0.708 0 0)',
   neutral500: 'oklch(0.556 0 0)',
   neutral600: 'oklch(0.439 0 0)',
-  neutral700: 'oklch(0.371 0 0)',
-  neutral800: 'oklch(0.269 0 0)',
+  neutral700: '#404040',
+  neutral800: '#262626',
   neutral900: '#171717',
 };
 
