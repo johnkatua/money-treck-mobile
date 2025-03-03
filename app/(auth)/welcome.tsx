@@ -4,6 +4,7 @@ import ScreenWrapper from '../../components/ScreenWrapper';
 import { colors, spacingX, spacingY } from '../../constants/theme';
 import Typo from '../../components/Typo';
 import { verticalScale } from '../../utils/styling';
+import Button from '../../components/Button';
 
 const Welcome = () => {
   return (
@@ -33,7 +34,11 @@ const Welcome = () => {
           <Typo size={18}>Finances must be arranged to set a better</Typo>
           <Typo size={18}>Lifestyle in future</Typo>
         </View>
-        <View style={styles.buttonContainer}></View>
+        <View style={styles.buttonContainer}>
+          <Button>
+            <Typo>Get Started</Typo>
+          </Button>
+        </View>
       </View>
     </ScreenWrapper>
   );

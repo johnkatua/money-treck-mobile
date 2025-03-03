@@ -3,10 +3,15 @@ import React, { FC } from 'react';
 import { colors, radius } from '../constants/theme';
 import { verticalScale } from '../utils/styling';
 import { CustomButtonProps } from '../types';
+import Loading from './Loading';
 
 const Button: FC<CustomButtonProps> = ({ style, onPress, children, loading = false }) => {
   if (loading) {
-    return <View style={[styles.button, style, { backgroundColor: 'transparent' }]}></View>;
+    return (
+      <View style={[styles.button, style, { backgroundColor: 'transparent' }]}>
+        <Loading />
+      </View>
+    );
   }
   return (
     <TouchableOpacity onPress={onPress} style={[styles.button, style]}>

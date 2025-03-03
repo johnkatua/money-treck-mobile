@@ -1,8 +1,8 @@
 import { horizontalScale, verticalScale } from '../utils/styling';
 
 export const colors = {
-  primary: 'oklch(84.93% 0.2073 128.85)',
-  primaryLight: 'oklch(68.47% 0.1479 237.32)',
+  primary: '#a3e635',
+  primaryLight: '#0ea5e9',
   primaryDark: 'oklch(50% 0.1193 242.75)',
   text: '#fff',
   textLight: 'oklch(92.19% 0 0)',
