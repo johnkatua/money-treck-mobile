@@ -13,7 +13,7 @@ export const horizontalScale = (size: number) =>
     PixelRatio.roundToNearestPixel(((shortDimension / guidelineBaseWidth) * size) as number)
   );
 
-export const verticalScal = (size: number) =>
+export const verticalScale = (size: number) =>
   Math.round(
     PixelRatio.roundToNearestPixel(((longDimension / guidelineBaseHeight) * size) as number)
   );
