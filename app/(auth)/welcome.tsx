@@ -20,6 +20,7 @@ const Welcome = () => {
           />
         </View>
       </View>
+      <View style={styles.footer}></View>
     </ScreenWrapper>
   );
 };

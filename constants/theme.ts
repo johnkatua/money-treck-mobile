@@ -7,7 +7,7 @@ export const colors = {
   text: '#fff',
   textLight: 'oklch(92.19% 0 0)',
   textLighter: 'oklch(86.99% 0 0)',
-  white: 'oklch(100% 0 0)',
+  white: '#fff',
   black: 'oklch(0% 0 0)',
   rose: 'oklch(63.68% 0.2078 25.33)',
   green: 'oklch(62.71% 0.1699 149.21)',
