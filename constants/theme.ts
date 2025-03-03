@@ -1,4 +1,3 @@
-import { green } from 'react-native-reanimated/lib/typescript/Colors';
 import { horizontalScale, verticalScale } from '../utils/styling';
 
 export const colors = {
