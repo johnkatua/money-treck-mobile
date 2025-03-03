@@ -20,7 +20,7 @@ export const colors = {
   neutral600: 'oklch(0.439 0 0)',
   neutral700: 'oklch(0.371 0 0)',
   neutral800: 'oklch(0.269 0 0)',
-  neutral900: 'oklch(0.205 0 0)',
+  neutral900: '#171717',
 };
 
 export const spacingX = {
