@@ -29,5 +29,5 @@ export interface CustomButtonProps extends TouchableOpacityProps {
 
 export type BackButtonProps = {
   style?: ViewStyle;
-  iconSize: number;
+  iconSize?: number;
 };
