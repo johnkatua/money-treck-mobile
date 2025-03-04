@@ -11,14 +11,14 @@ const Login = () => {
     <ScreenWrapper>
       <View style={styles.container}>
         <BackButton />
-      </View>
-      <View style={{ gap: 5, marginTop: spacingY._20 }}>
-        <Typo size={30} fontWeight={'800'}>
-          Hello,
-        </Typo>
-        <Typo size={30} fontWeight={'800'}>
-          Welcome Back
-        </Typo>
+        <View style={{ gap: 5, marginTop: spacingY._20 }}>
+          <Typo size={30} fontWeight={'800'}>
+            Hello,
+          </Typo>
+          <Typo size={30} fontWeight={'800'}>
+            Welcome Back
+          </Typo>
+        </View>
       </View>
     </ScreenWrapper>
   );
