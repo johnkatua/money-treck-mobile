@@ -1,5 +1,12 @@
-import { ReactNode } from 'react';
-import { TextProps, TextStyle, TouchableOpacityProps, ViewStyle } from 'react-native';
+import { ReactNode, RefObject } from 'react';
+import {
+  TextInput,
+  TextInputProps,
+  TextProps,
+  TextStyle,
+  TouchableOpacityProps,
+  ViewStyle,
+} from 'react-native';
 
 type WrapperProps = {
   style?: ViewStyle;
@@ -31,3 +38,10 @@ export type BackButtonProps = {
   style?: ViewStyle;
   iconSize?: number;
 };
+
+export interface InputProps extends TextInputProps {
+  icon?: ReactNode;
+  containerStyle?: ViewStyle;
+  inputStyle?: TextStyle;
+  inputRef?: RefObject<TextInput>;
+}
