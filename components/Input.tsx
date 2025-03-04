@@ -1,10 +1,10 @@
-import { StyleSheet, Text, TextInput, View } from 'react-native';
 import React, { FC } from 'react';
-import { colors, radius, spacingX, spacingY } from '../constants/theme';
-import { verticalScale } from '../utils/styling';
+import { StyleSheet, TextInput, View } from 'react-native';
+import { colors, radius, spacingX } from '../constants/theme';
 import { InputProps } from '../types';
+import { verticalScale } from '../utils/styling';
 
-const Input: FC<InputProps> = ({ containerStyle, inputStyle, inputRef, icon }) => {
+const Input: FC<InputProps> = ({ containerStyle, inputStyle, inputRef, icon, ...props }) => {
   return (
     <View style={[styles.container, containerStyle]}>
       {icon}
@@ -12,6 +12,7 @@ const Input: FC<InputProps> = ({ containerStyle, inputStyle, inputRef, icon }) =
         style={[styles.input, inputStyle]}
         placeholderTextColor={colors.neutral400}
         ref={inputRef}
+        {...props}
       />
     </View>
   );

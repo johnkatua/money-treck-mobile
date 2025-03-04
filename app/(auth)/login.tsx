@@ -1,11 +1,11 @@
-import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import BackButton from '../../components/BackButton';
+import Input from '../../components/Input';
 import ScreenWrapper from '../../components/ScreenWrapper';
+import Typo from '../../components/Typo';
 import { colors, spacingX, spacingY } from '../../constants/theme';
 import { verticalScale } from '../../utils/styling';
-import BackButton from '../../components/BackButton';
-import Typo from '../../components/Typo';
-import Input from '../../components/Input';
 
 const Login = () => {
   return (
@@ -24,7 +24,7 @@ const Login = () => {
           <Typo size={16} color={colors.textLighter}>
             Login now to track all your finances
           </Typo>
-          <Input />
+          <Input placeholder="Enter your email" />
         </View>
       </View>
     </ScreenWrapper>
