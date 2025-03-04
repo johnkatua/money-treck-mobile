@@ -26,3 +26,8 @@ export interface CustomButtonProps extends TouchableOpacityProps {
   children: ReactNode;
   onPress?: () => void;
 }
+
+export type BackButtonProps = {
+  style?: ViewStyle;
+  iconSize: number;
+};
