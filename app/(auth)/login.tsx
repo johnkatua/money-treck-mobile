@@ -5,6 +5,7 @@ import { colors, spacingX, spacingY } from '../../constants/theme';
 import { verticalScale } from '../../utils/styling';
 import BackButton from '../../components/BackButton';
 import Typo from '../../components/Typo';
+import Input from '../../components/Input';
 
 const Login = () => {
   return (
@@ -23,6 +24,7 @@ const Login = () => {
           <Typo size={16} color={colors.textLighter}>
             Login now to track all your finances
           </Typo>
+          <Input />
         </View>
       </View>
     </ScreenWrapper>
