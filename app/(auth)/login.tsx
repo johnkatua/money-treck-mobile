@@ -4,12 +4,21 @@ import ScreenWrapper from '../../components/ScreenWrapper';
 import { colors, spacingX, spacingY } from '../../constants/theme';
 import { verticalScale } from '../../utils/styling';
 import BackButton from '../../components/BackButton';
+import Typo from '../../components/Typo';
 
 const Login = () => {
   return (
     <ScreenWrapper>
       <View style={styles.container}>
         <BackButton />
+      </View>
+      <View style={{ gap: 5, marginTop: spacingY._20 }}>
+        <Typo size={30} fontWeight={'800'}>
+          Hello,
+        </Typo>
+        <Typo size={30} fontWeight={'800'}>
+          Welcome Back
+        </Typo>
       </View>
     </ScreenWrapper>
   );
