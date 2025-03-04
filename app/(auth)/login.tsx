@@ -19,6 +19,11 @@ const Login = () => {
             Welcome Back
           </Typo>
         </View>
+        <View style={styles.form}>
+          <Typo size={16} color={colors.textLighter}>
+            Login now to track all your finances
+          </Typo>
+        </View>
       </View>
     </ScreenWrapper>
   );
@@ -36,5 +41,8 @@ const styles = StyleSheet.create({
     fontSize: verticalScale(20),
     fontWeight: 'bold',
     color: colors.text,
+  },
+  form: {
+    gap: spacingY._20,
   },
 });
