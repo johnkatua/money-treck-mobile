@@ -1,10 +1,11 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import ScreenWrapper from '../../components/ScreenWrapper';
-import { colors, spacingX, spacingY } from '../../constants/theme';
+import { colors, radius, spacingX, spacingY } from '../../constants/theme';
 import Typo from '../../components/Typo';
-import { verticalScale } from '../../utils/styling';
+import { horizontalScale, verticalScale } from '../../utils/styling';
 import Button from '../../components/Button';
+import Animated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 
 const Welcome = () => {
   return (
@@ -12,32 +13,46 @@ const Welcome = () => {
       <View style={styles.contanier}>
         <View>
           <TouchableOpacity style={styles.loginButton}>
-            <Typo fontWeight={'500'}>Login</Typo>
+            <Typo fontWeight={'500'} color={colors.neutral900}>
+              Login
+            </Typo>
           </TouchableOpacity>
-          <Image
+          <Animated.Image
+            entering={FadeIn.duration(500)}
             source={require('../../assets/images/welcome.png')}
             style={styles.welcomeImage}
             resizeMode="contain"
           />
         </View>
         <View style={styles.footer}>
-          <View style={{ alignItems: 'center' }}>
+          <Animated.View
+            entering={FadeInDown.duration(1000).springify().damping(12)}
+            style={{ alignItems: 'center' }}
+          >
             <Typo size={30} fontWeight={'800'}>
               Always take control
             </Typo>
             <Typo size={30} fontWeight={'800'}>
               of your finances
             </Typo>
-          </View>
-          <View style={{ alignItems: 'center', gap: 2 }}>
+          </Animated.View>
+          <Animated.View
+            entering={FadeInDown.duration(1000).delay(100).springify().damping(12)}
+            style={{ alignItems: 'center' }}
+          >
             <Typo size={18}>Finances must be arranged to set a better</Typo>
             <Typo size={18}>Lifestyle in future</Typo>
-          </View>
-          <View style={styles.buttonContainer}>
+          </Animated.View>
+          <Animated.View
+            entering={FadeInDown.duration(1000).springify().damping(12)}
+            style={styles.buttonContainer}
+          >
             <Button>
-              <Typo>Get Started</Typo>
+              <Typo size={22} color={colors.neutral900} fontWeight={'600'}>
+                Get Started
+              </Typo>
             </Button>
-          </View>
+          </Animated.View>
         </View>
       </View>
     </ScreenWrapper>
@@ -61,6 +76,11 @@ const styles = StyleSheet.create({
   loginButton: {
     alignSelf: 'flex-end',
     marginRight: spacingX._20,
+    backgroundColor: colors.primary,
+    paddingVertical: verticalScale(7),
+    paddingHorizontal: horizontalScale(15),
+    borderRadius: radius._10,
+    borderCurve: 'continuous',
   },
   footer: {
     backgroundColor: colors.black,
