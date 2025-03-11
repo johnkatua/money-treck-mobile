@@ -39,12 +39,12 @@ const Login = () => {
               </Typo>
               <Input
                 placeholder="Enter your email"
-                icon={<At size={verticalScale(26)} />}
+                icon={<At size={verticalScale(26)} color={colors.text} />}
                 onChangeText={handleChange('email')}
                 onBlur={handleBlur('email')}
                 value={values.email}
               />
-              {touched.email && errors.email && <Typo color={colors.error}>{errors.email}</Typo>}
+              {touched.email && errors.email && <Typo color={colors.error}>* {errors.email}</Typo>}
               <Input
                 placeholder="Enter your password"
                 secureTextEntry
@@ -52,7 +52,7 @@ const Login = () => {
                 onBlur={handleBlur('password')}
                 value={values.password}
               />
-              {touched.email && errors.email && <Typo color={colors.error}>{errors.email}</Typo>}
+              {touched.email && errors.email && <Typo color={colors.error}>* {errors.email}</Typo>}
               <Button onPress={handleSubmit}>
                 <Typo size={22} color={colors.neutral900} fontWeight={'600'}>
                   Login
