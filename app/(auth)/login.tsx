@@ -7,6 +7,8 @@ import Typo from '../../components/Typo';
 import { colors, spacingX, spacingY } from '../../constants/theme';
 import { verticalScale } from '../../utils/styling';
 import { At } from 'phosphor-react-native';
+import { Formik } from 'formik';
+import { loginSchema } from '../../utils/validation';
 
 const Login = () => {
   return (
@@ -21,12 +23,21 @@ const Login = () => {
             Welcome Back
           </Typo>
         </View>
-        <View style={styles.form}>
-          <Typo size={16} color={colors.textLighter}>
-            Login now to track all your finances
-          </Typo>
-          <Input placeholder="Enter your email" icon={<At size={verticalScale(26)} />} />
-        </View>
+        <Formik
+          initialValues={{
+            email: '',
+            password: '',
+          }}
+          validationSchema={loginSchema}
+          onSubmit={(values) => console.log(values)}
+        >
+          <View style={styles.form}>
+            <Typo size={16} color={colors.textLighter}>
+              Login now to track all your finances
+            </Typo>
+            <Input placeholder="Enter your email" icon={<At size={verticalScale(26)} />} />
+          </View>
+        </Formik>
       </View>
     </ScreenWrapper>
   );
