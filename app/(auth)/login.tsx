@@ -6,6 +6,7 @@ import ScreenWrapper from '../../components/ScreenWrapper';
 import Typo from '../../components/Typo';
 import { colors, spacingX, spacingY } from '../../constants/theme';
 import { verticalScale } from '../../utils/styling';
+import { At } from 'phosphor-react-native';
 
 const Login = () => {
   return (
@@ -24,7 +25,7 @@ const Login = () => {
           <Typo size={16} color={colors.textLighter}>
             Login now to track all your finances
           </Typo>
-          <Input placeholder="Enter your email" />
+          <Input placeholder="Enter your email" icon={<At size={verticalScale(26)} />} />
         </View>
       </View>
     </ScreenWrapper>
