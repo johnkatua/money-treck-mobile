@@ -10,6 +10,8 @@ const _layout = () => {
         screenOptions={{
           headerShown: false,
           headerTintColor: '#000',
+          gestureEnabled: true,
+          gestureDirection: 'horizontal',
         }}
       ></Stack>
     </>
