@@ -10,6 +10,7 @@ import { At } from 'phosphor-react-native';
 import { Formik } from 'formik';
 import { loginSchema } from '../../utils/validation';
 import Button from '../../components/Button';
+import { HelperText } from 'react-native-paper';
 
 const Login = () => {
   return (
@@ -44,7 +45,11 @@ const Login = () => {
                 onBlur={handleBlur('email')}
                 value={values.email}
               />
-              {touched.email && errors.email && <Typo color={colors.error}>* {errors.email}</Typo>}
+              {errors.email && (
+                <HelperText type="error" visible={!!errors.email}>
+                  * {errors.email}
+                </HelperText>
+              )}
               <Input
                 placeholder="Enter your password"
                 secureTextEntry
@@ -52,7 +57,11 @@ const Login = () => {
                 onBlur={handleBlur('password')}
                 value={values.password}
               />
-              {touched.email && errors.email && <Typo color={colors.error}>* {errors.email}</Typo>}
+              {errors.password && (
+                <HelperText type="error" visible={!!errors.password}>
+                  * {errors.password}
+                </HelperText>
+              )}
               <Button onPress={handleSubmit}>
                 <Typo size={22} color={colors.neutral900} fontWeight={'600'}>
                   Login
