@@ -1,18 +1,19 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Formik } from 'formik';
+import { At, Eye, EyeSlash } from 'phosphor-react-native';
+import React, { useState } from 'react';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { HelperText } from 'react-native-paper';
 import BackButton from '../../components/BackButton';
+import Button from '../../components/Button';
 import Input from '../../components/Input';
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Typo from '../../components/Typo';
 import { colors, spacingX, spacingY } from '../../constants/theme';
 import { verticalScale } from '../../utils/styling';
-import { At } from 'phosphor-react-native';
-import { Formik } from 'formik';
 import { loginSchema } from '../../utils/validation';
-import Button from '../../components/Button';
-import { HelperText } from 'react-native-paper';
 
 const Login = () => {
+  const [secureText, setSecureText] = useState(true);
   return (
     <ScreenWrapper>
       <View style={styles.container}>
@@ -52,10 +53,19 @@ const Login = () => {
               )}
               <Input
                 placeholder="Enter your password"
-                secureTextEntry
+                secureTextEntry={secureText}
                 onChangeText={handleChange('password')}
                 onBlur={handleBlur('password')}
                 value={values.password}
+                icon={
+                  <TouchableOpacity onPress={() => setSecureText(!secureText)}>
+                    {secureText ? (
+                      <Eye size={verticalScale(26)} color={colors.text} />
+                    ) : (
+                      <EyeSlash size={verticalScale(26)} color={colors.text} />
+                    )}
+                  </TouchableOpacity>
+                }
               />
               {errors.password && (
                 <HelperText type="error" visible={!!errors.password}>
