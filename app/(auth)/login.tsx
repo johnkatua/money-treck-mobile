@@ -9,6 +9,7 @@ import { verticalScale } from '../../utils/styling';
 import { At } from 'phosphor-react-native';
 import { Formik } from 'formik';
 import { loginSchema } from '../../utils/validation';
+import Button from '../../components/Button';
 
 const Login = () => {
   return (
@@ -52,6 +53,11 @@ const Login = () => {
                 value={values.password}
               />
               {touched.email && errors.email && <Typo color={colors.error}>{errors.email}</Typo>}
+              <Button onPress={handleSubmit}>
+                <Typo size={22} color={colors.neutral900} fontWeight={'600'}>
+                  Login
+                </Typo>
+              </Button>
             </View>
           )}
         </Formik>
