@@ -10,7 +10,7 @@ import ScreenWrapper from '../../components/ScreenWrapper';
 import Typo from '../../components/Typo';
 import { colors, spacingX, spacingY } from '../../constants/theme';
 import { verticalScale } from '../../utils/styling';
-import { loginSchema } from '../../utils/validation';
+import { registerSchema } from '../../utils/validation';
 import { useRouter } from 'expo-router';
 
 const Register = () => {
@@ -36,7 +36,7 @@ const Register = () => {
             password: '',
             phoneNumber: '',
           }}
-          validationSchema={loginSchema}
+          validationSchema={registerSchema}
           onSubmit={(values) => console.log(values)}
         >
           {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
