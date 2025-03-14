@@ -23,10 +23,10 @@ const Register = () => {
         <BackButton />
         <View style={{ gap: 5, marginTop: spacingY._20 }}>
           <Typo size={30} fontWeight={'800'}>
-            Hello,
+            Let's,
           </Typo>
           <Typo size={30} fontWeight={'800'}>
-            Welcome Back
+            Get Started
           </Typo>
         </View>
         <Formik
@@ -77,7 +77,7 @@ const Register = () => {
               )}
               <Button loading={isLoading} onPress={handleSubmit}>
                 <Typo size={22} color={colors.neutral900} fontWeight={'600'}>
-                  Login
+                  Register
                 </Typo>
               </Button>
               <View style={styles.footer}>
