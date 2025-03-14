@@ -40,7 +40,7 @@ const Register = () => {
           {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
             <View style={styles.form}>
               <Typo size={16} color={colors.textLighter}>
-                Login now to track all your finances
+                Register now to track all your finances
               </Typo>
               <Input
                 placeholder="Enter your email"
@@ -82,11 +82,11 @@ const Register = () => {
               </Button>
               <View style={styles.footer}>
                 <Typo size={16} color={colors.textLight}>
-                  Don't have an account?
+                  Already have an account?
                 </Typo>
-                <TouchableOpacity onPress={() => router.push('/(auth)/register')}>
+                <TouchableOpacity onPress={() => router.push('/(auth)/login')}>
                   <Typo size={16} color={colors.primary} fontWeight={'600'}>
-                    Register
+                    Login
                   </Typo>
                 </TouchableOpacity>
               </View>
