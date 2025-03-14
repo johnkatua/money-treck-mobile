@@ -1,9 +1,9 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { persistReducer, persistStore } from 'redux-persist';
-import rootReducer from './root';
 import { configureStore, Middleware } from '@reduxjs/toolkit';
-import { api } from '../api/rtkApi';
 import { setupListeners } from '@reduxjs/toolkit/query';
+import { persistReducer, persistStore } from 'redux-persist';
+import { api } from '../api/rtkApi';
+import rootReducer from './root';
 
 const persistConfig = {
   key: 'root',
