@@ -40,7 +40,7 @@ const Register = () => {
           {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
             <View style={styles.form}>
               <Typo size={16} color={colors.textLighter}>
-                Register now to track all your finances
+                Create an account now to track all your finances.
               </Typo>
               <Input
                 placeholder="Enter your email"
