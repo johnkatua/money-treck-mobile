@@ -41,10 +41,10 @@ const Login = () => {
               </Typo>
               <Input
                 placeholder="Enter your email"
-                icon={<At size={verticalScale(26)} color={colors.neutral300} />}
                 onChangeText={handleChange('email')}
                 onBlur={handleBlur('email')}
                 value={values.email}
+                icon={<At size={verticalScale(26)} color={colors.neutral300} weight="fill" />}
               />
               {errors.email && (
                 <HelperText type="error" visible={!!errors.email}>
@@ -60,9 +60,9 @@ const Login = () => {
                 icon={
                   <TouchableOpacity onPress={() => setSecureText(!secureText)}>
                     {secureText ? (
-                      <Eye size={verticalScale(26)} color={colors.neutral300} />
+                      <Eye size={verticalScale(26)} color={colors.neutral300} weight="fill" />
                     ) : (
-                      <EyeSlash size={verticalScale(26)} color={colors.neutral300} />
+                      <EyeSlash size={verticalScale(26)} color={colors.neutral300} weight="fill" />
                     )}
                   </TouchableOpacity>
                 }
