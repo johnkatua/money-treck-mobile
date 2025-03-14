@@ -84,7 +84,7 @@ const Login = () => {
                 <Typo size={16} color={colors.textLight}>
                   Don't have an account?
                 </Typo>
-                <TouchableOpacity onPress={() => router.push('/(auth)/register')}>
+                <TouchableOpacity onPress={() => router.navigate('/(auth)/register')}>
                   <Typo size={16} color={colors.primary} fontWeight={'600'}>
                     Register
                   </Typo>

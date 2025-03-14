@@ -1,5 +1,5 @@
 import { Formik } from 'formik';
-import { At, Eye, EyeSlash } from 'phosphor-react-native';
+import { At, Eye, EyeSlash, Phone, User } from 'phosphor-react-native';
 import React, { useState } from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { HelperText } from 'react-native-paper';
@@ -49,7 +49,7 @@ const Register = () => {
                 onChangeText={handleChange('name')}
                 onBlur={handleBlur('name')}
                 value={values.email}
-                icon={<At size={verticalScale(26)} color={colors.neutral300} weight="fill" />}
+                icon={<User size={verticalScale(26)} color={colors.neutral300} weight="fill" />}
               />
               {errors.name && (
                 <HelperText type="error" visible={!!errors.name}>
@@ -94,7 +94,7 @@ const Register = () => {
                 onChangeText={handleChange('phoneNumber')}
                 onBlur={handleBlur('phoneNumber')}
                 value={values.phoneNumber}
-                icon={<At size={verticalScale(26)} color={colors.neutral300} weight="fill" />}
+                icon={<Phone size={verticalScale(26)} color={colors.neutral300} weight="fill" />}
               />
               {errors.phoneNumber && (
                 <HelperText type="error" visible={!!errors.phoneNumber}>
@@ -110,7 +110,7 @@ const Register = () => {
                 <Typo size={16} color={colors.textLight}>
                   Already have an account?
                 </Typo>
-                <TouchableOpacity onPress={() => router.push('/(auth)/login')}>
+                <TouchableOpacity onPress={() => router.navigate('/(auth)/login')}>
                   <Typo size={16} color={colors.primary} fontWeight={'600'}>
                     Login
                   </Typo>
@@ -145,6 +145,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: spacingX._10,
+    marginBottom: spacingY._20,
+    backgroundColor: colors.primary,
+    paddingVertical: spacingY._10,
   },
   footerText: {
     color: colors.textLight,
