@@ -45,3 +45,14 @@ export interface InputProps extends TextInputProps {
   inputStyle?: TextStyle;
   inputRef?: RefObject<TextInput>;
 }
+
+export type LoginProps = {
+  email: string;
+  password: string;
+};
+
+export type RegisterProps = {
+  email: string;
+  password: string;
+  confirmPassword: string;
+};
