@@ -31,8 +31,10 @@ const Register = () => {
         </View>
         <Formik
           initialValues={{
+            name: '',
             email: '',
             password: '',
+            phoneNumber: '',
           }}
           validationSchema={loginSchema}
           onSubmit={(values) => console.log(values)}
@@ -42,6 +44,18 @@ const Register = () => {
               <Typo size={16} color={colors.textLighter}>
                 Create an account now to track all your finances.
               </Typo>
+              <Input
+                placeholder="Enter your name"
+                onChangeText={handleChange('name')}
+                onBlur={handleBlur('name')}
+                value={values.email}
+                icon={<At size={verticalScale(26)} color={colors.neutral300} weight="fill" />}
+              />
+              {errors.name && (
+                <HelperText type="error" visible={!!errors.name}>
+                  * {errors.name}
+                </HelperText>
+              )}
               <Input
                 placeholder="Enter your email"
                 onChangeText={handleChange('email')}
@@ -73,6 +87,18 @@ const Register = () => {
               {errors.password && (
                 <HelperText type="error" visible={!!errors.password}>
                   * {errors.password}
+                </HelperText>
+              )}
+              <Input
+                placeholder="Enter your Phone Number"
+                onChangeText={handleChange('phoneNumber')}
+                onBlur={handleBlur('phoneNumber')}
+                value={values.phoneNumber}
+                icon={<At size={verticalScale(26)} color={colors.neutral300} weight="fill" />}
+              />
+              {errors.phoneNumber && (
+                <HelperText type="error" visible={!!errors.phoneNumber}>
+                  * {errors.phoneNumber}
                 </HelperText>
               )}
               <Button loading={isLoading} onPress={handleSubmit}>
