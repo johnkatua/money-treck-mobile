@@ -11,9 +11,12 @@ import Typo from '../../components/Typo';
 import { colors, spacingX, spacingY } from '../../constants/theme';
 import { verticalScale } from '../../utils/styling';
 import { loginSchema } from '../../utils/validation';
+import { useRouter } from 'expo-router';
 
 const Login = () => {
+  const router = useRouter();
   const [secureText, setSecureText] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   return (
     <ScreenWrapper>
       <View style={styles.container}>
@@ -72,11 +75,21 @@ const Login = () => {
                   * {errors.password}
                 </HelperText>
               )}
-              <Button onPress={handleSubmit}>
+              <Button loading={isLoading} onPress={handleSubmit}>
                 <Typo size={22} color={colors.neutral900} fontWeight={'600'}>
                   Login
                 </Typo>
               </Button>
+              <View style={styles.footer}>
+                <Typo size={16} color={colors.textLight}>
+                  Don't have an account?
+                </Typo>
+                <TouchableOpacity onPress={() => router.push('/(auth)/register')}>
+                  <Typo size={16} color={colors.primary} fontWeight={'600'}>
+                    Register
+                  </Typo>
+                </TouchableOpacity>
+              </View>
             </View>
           )}
         </Formik>
@@ -100,5 +113,16 @@ const styles = StyleSheet.create({
   },
   form: {
     gap: spacingY._20,
+  },
+  footer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: spacingX._10,
+  },
+  footerText: {
+    color: colors.textLight,
+    fontSize: verticalScale(14),
+    textAlign: 'center',
   },
 });
