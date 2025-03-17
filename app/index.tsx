@@ -1,12 +1,10 @@
+import { useRouter } from 'expo-router';
 import React, { useEffect } from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 import { colors } from '../constants/theme';
-import { useRouter } from 'expo-router';
-import { useAppSelector } from '../store/root';
 
 const index = () => {
   const router = useRouter();
-  const { token } = useAppSelector((state) => state.auth);
 
   useEffect(() => {
     setTimeout(() => router.replace('/(auth)/welcome'), 2000);
