@@ -1,33 +1,38 @@
+import { useRouter } from 'expo-router';
 import { Formik } from 'formik';
 import { At, Eye, EyeSlash } from 'phosphor-react-native';
 import React, { useState } from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { HelperText } from 'react-native-paper';
+import { useLoginMutation } from '../../api/authApi';
 import BackButton from '../../components/BackButton';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
+import MTSnackbar from '../../components/MTSnackbar';
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Typo from '../../components/Typo';
 import { colors, spacingX, spacingY } from '../../constants/theme';
 import { verticalScale } from '../../utils/styling';
 import { loginSchema } from '../../utils/validation';
-import { useRouter } from 'expo-router';
-import { useAppDispatch } from '../../store/root';
-import { loginUser } from '../../features/auth/authSlice';
-import { useLoginMutation } from '../../api/authApi';
 
 const Login = () => {
-  const dispatch = useAppDispatch();
   const router = useRouter();
   const [secureText, setSecureText] = useState(true);
-  // const [isLoading, setIsLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
   const [login, { isLoading: isLoggingIn }] = useLoginMutation();
 
   const handleLogin = async (values) => {
     try {
       const { data, error } = await login(values);
-      console.log('data:', data, error);
-      if (error || !data) return;
+      if (error) {
+        setErrorMsg('Something went wrong');
+        return;
+      }
+
+      if (!data) {
+        setErrorMsg('Invalid credentials');
+        return;
+      }
       router.replace('/(tabs)');
     } catch (error) {
       console.error('Login error:', error);
@@ -37,6 +42,12 @@ const Login = () => {
     <ScreenWrapper>
       <View style={styles.container}>
         <BackButton />
+        <MTSnackbar
+          message={errorMsg}
+          visible={!!errorMsg}
+          onDismissSnackBar={() => setErrorMsg('')}
+          duration={5000}
+        />
         <View style={{ gap: 5, marginTop: spacingY._20 }}>
           <Typo size={30} fontWeight={'800'}>
             Hello,

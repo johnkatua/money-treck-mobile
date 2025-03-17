@@ -1,4 +1,4 @@
-import { Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Platform, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import React, { FC } from 'react';
 import { ScreenContainerProps } from 'react-native-screens';
 import { SCREEN_HEIGHT } from '../utils/styling';
