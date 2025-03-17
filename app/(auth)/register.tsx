@@ -48,7 +48,7 @@ const Register = () => {
                 placeholder="Enter your name"
                 onChangeText={handleChange('name')}
                 onBlur={handleBlur('name')}
-                value={values.email}
+                value={values.name}
                 icon={<User size={verticalScale(26)} color={colors.neutral300} weight="fill" />}
               />
               {errors.name && (
@@ -131,6 +131,7 @@ const styles = StyleSheet.create({
     flex: 1,
     gap: spacingY._30,
     paddingHorizontal: spacingX._20,
+    paddingVertical: spacingY._20,
   },
   welcomeText: {
     fontSize: verticalScale(20),
@@ -145,9 +146,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: spacingX._10,
-    marginBottom: spacingY._20,
-    backgroundColor: colors.primary,
-    paddingVertical: spacingY._10,
   },
   footerText: {
     color: colors.textLight,
