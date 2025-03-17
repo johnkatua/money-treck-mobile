@@ -60,3 +60,14 @@ export type RegisterProps = {
   password: string;
   confirmPassword: string;
 };
+
+export type MTSnackbarProps = {
+  message: string;
+  duration?: number;
+  action?: {
+    label: string;
+    onPress: () => void;
+  };
+  onDismissSnackBar: () => void;
+  visible: boolean;
+};
