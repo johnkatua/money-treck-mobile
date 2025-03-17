@@ -9,15 +9,9 @@ const index = () => {
   const { token } = useAppSelector((state) => state.auth);
 
   useEffect(() => {
-    console.log('token', token);
-    if (token) {
-      setTimeout(() => router.replace('/(tabs)'), 2000);
-    } else {
-      setTimeout(() => router.replace('/(auth)/welcome'), 2000);
-    }
-  }, [token]);
+    setTimeout(() => router.replace('/(auth)/welcome'), 2000);
+  }, []);
 
-  console.log('token1', token);
   return (
     <View style={styles.container}>
       <Image

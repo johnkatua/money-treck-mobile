@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
-    token: 'mockToken',
+    token: null,
   },
   reducers: {
     loginUser(state, { payload }) {

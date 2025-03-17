@@ -12,11 +12,24 @@ import { colors, spacingX, spacingY } from '../../constants/theme';
 import { verticalScale } from '../../utils/styling';
 import { loginSchema } from '../../utils/validation';
 import { useRouter } from 'expo-router';
+import { useAppDispatch } from '../../store/root';
+import { loginUser } from '../../features/auth/authSlice';
 
 const Login = () => {
+  const dispatch = useAppDispatch();
   const router = useRouter();
   const [secureText, setSecureText] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+
+  const handleLogin = (values) => {
+    console.log(values);
+    setIsLoading(true);
+    setTimeout(() => {
+      dispatch(loginUser('Mock Token'));
+      setIsLoading(false);
+      router.replace('/(tabs)');
+    }, 2000);
+  };
   return (
     <ScreenWrapper>
       <View style={styles.container}>
@@ -35,7 +48,7 @@ const Login = () => {
             password: '',
           }}
           validationSchema={loginSchema}
-          onSubmit={(values) => console.log(values)}
+          onSubmit={(values) => handleLogin(values)}
         >
           {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
             <View style={styles.form}>

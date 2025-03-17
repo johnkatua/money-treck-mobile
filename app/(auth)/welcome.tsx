@@ -1,5 +1,5 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import ScreenWrapper from '../../components/ScreenWrapper';
 import { colors, radius, spacingX, spacingY } from '../../constants/theme';
 import Typo from '../../components/Typo';
@@ -7,9 +7,17 @@ import { horizontalScale, verticalScale } from '../../utils/styling';
 import Button from '../../components/Button';
 import Animated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 import { useRouter } from 'expo-router';
+import { useAppSelector } from '../../store/root';
 
 const Welcome = () => {
   const router = useRouter();
+  const { token } = useAppSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (token) {
+      router.replace('/(tabs)');
+    }
+  }, []);
   return (
     <ScreenWrapper>
       <View style={styles.contanier}>
