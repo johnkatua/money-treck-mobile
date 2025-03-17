@@ -1,10 +1,10 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { useRouter } from 'expo-router';
 import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 import Button from '../../components/Button';
 import Typo from '../../components/Typo';
-import { useAppDispatch } from '../../store/root';
 import { logout } from '../../features/auth/authSlice';
-import { useRouter } from 'expo-router';
+import { useAppDispatch } from '../../store/root';
 
 const Home = () => {
   const dispatch = useAppDispatch();
