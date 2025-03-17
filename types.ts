@@ -51,6 +51,10 @@ export type LoginProps = {
   password: string;
 };
 
+export type LoginResponse = {
+  token: string;
+};
+
 export type RegisterProps = {
   email: string;
   password: string;

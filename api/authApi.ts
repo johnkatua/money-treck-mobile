@@ -1,15 +1,28 @@
 import { api } from './rtkApi';
-import { LoginProps, RegisterProps } from '../types';
+import { LoginResponse, RegisterProps } from '../types';
 import { appConfig } from '../config/app-config';
+import { loginUser } from '../features/auth/authSlice';
 
 export const authApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    login: builder.mutation<LoginProps, void>({
+    login: builder.mutation<LoginResponse, void>({
       query: (body) => ({
         url: appConfig.auth.login,
         method: 'POST',
         body,
       }),
+      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          dispatch(
+            loginUser({
+              token: data.token,
+            })
+          );
+        } catch (error) {
+          console.error('Login error:', error);
+        }
+      },
     }),
     register: builder.mutation<RegisterProps, void>({
       query: (body) => ({
