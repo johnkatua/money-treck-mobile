@@ -1,5 +1,5 @@
 export const appConfig = {
-  apiBaseUrl: 'http://localhost:3000/api',
+  apiBaseUrl: 'http://10.4.21.23:8002/api',
   auth: {
     login: '/users/login',
     register: '/users/register',

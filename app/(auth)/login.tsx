@@ -25,8 +25,9 @@ const Login = () => {
 
   const handleLogin = async (values) => {
     try {
-      const data = await login(values);
-      console.log('data:', data);
+      const { data, error } = await login(values);
+      console.log('data:', data, error);
+      if (error) return;
       router.replace('/(tabs)');
     } catch (error) {
       console.error('Login error:', error);
