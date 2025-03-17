@@ -27,7 +27,7 @@ const Login = () => {
     try {
       const { data, error } = await login(values);
       console.log('data:', data, error);
-      if (error) return;
+      if (error || !data) return;
       router.replace('/(tabs)');
     } catch (error) {
       console.error('Login error:', error);
