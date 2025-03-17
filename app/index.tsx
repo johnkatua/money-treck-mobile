@@ -2,13 +2,23 @@ import React, { useEffect } from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 import { colors } from '../constants/theme';
 import { useRouter } from 'expo-router';
+import { useAppSelector } from '../store/root';
 
 const index = () => {
   const router = useRouter();
+  const { token } = useAppSelector((state) => state.auth);
 
   useEffect(() => {
-    setTimeout(() => router.push('/(auth)/welcome'), 2000);
-  }, []);
+    console.log('token', token);
+    if (token) {
+      router.replace('/(tabs)/index');
+    } else {
+      router.replace('/(auth)/welcome');
+    }
+    // setTimeout(() => router.push('/(auth)/welcome'), 2000);
+  }, [token]);
+
+  console.log('token1', token);
   return (
     <View style={styles.container}>
       <Image
