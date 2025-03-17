@@ -11,11 +11,10 @@ const index = () => {
   useEffect(() => {
     console.log('token', token);
     if (token) {
-      router.replace('/(tabs)/index');
+      setTimeout(() => router.replace('/(tabs)'), 2000);
     } else {
-      router.replace('/(auth)/welcome');
+      setTimeout(() => router.replace('/(auth)/welcome'), 2000);
     }
-    // setTimeout(() => router.push('/(auth)/welcome'), 2000);
   }, [token]);
 
   console.log('token1', token);
