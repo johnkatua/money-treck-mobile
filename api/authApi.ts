@@ -14,11 +14,7 @@ export const authApi = api.injectEndpoints({
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          dispatch(
-            loginUser({
-              token: data.token,
-            })
-          );
+          dispatch(loginUser(data.token));
         } catch (error) {
           console.error('Login error:', error);
         }

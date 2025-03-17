@@ -14,21 +14,23 @@ import { loginSchema } from '../../utils/validation';
 import { useRouter } from 'expo-router';
 import { useAppDispatch } from '../../store/root';
 import { loginUser } from '../../features/auth/authSlice';
+import { useLoginMutation } from '../../api/authApi';
 
 const Login = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const [secureText, setSecureText] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
+  const [login, { isLoading: isLoggingIn }] = useLoginMutation();
 
-  const handleLogin = (values) => {
-    console.log(values);
-    setIsLoading(true);
-    setTimeout(() => {
-      dispatch(loginUser('Mock Token'));
-      setIsLoading(false);
+  const handleLogin = async (values) => {
+    try {
+      const data = await login(values);
+      console.log('data:', data);
       router.replace('/(tabs)');
-    }, 2000);
+    } catch (error) {
+      console.error('Login error:', error);
+    }
   };
   return (
     <ScreenWrapper>
@@ -88,7 +90,7 @@ const Login = () => {
                   * {errors.password}
                 </HelperText>
               )}
-              <Button loading={isLoading} onPress={handleSubmit}>
+              <Button loading={isLoggingIn} onPress={handleSubmit}>
                 <Typo size={22} color={colors.neutral900} fontWeight={'600'}>
                   Login
                 </Typo>

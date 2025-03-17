@@ -16,9 +16,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 const store = configureStore({
   devTools: __DEV__,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({ thunk: false, serializableCheck: false }).concat(
-      api.middleware as Middleware
-    ),
+    getDefaultMiddleware({ serializableCheck: false }).concat(api.middleware as Middleware),
   reducer: persistedReducer,
 });
 

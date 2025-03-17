@@ -5,7 +5,7 @@ import store from './store';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 
-export default combineReducers({
+const reducer = combineReducers({
   auth: authSlice,
   [api.reducerPath]: api.reducer,
 });
@@ -15,3 +15,5 @@ export type AppDispatch = typeof store.dispatch;
 export type AppSelector<T> = (state: RootState) => T;
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector = <T>(selector: AppSelector<T>) => useSelector(selector);
+
+export default reducer;

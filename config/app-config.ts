@@ -1,11 +1,11 @@
 export const appConfig = {
   apiBaseUrl: 'http://localhost:3000/api',
   auth: {
-    login: '/auth/login',
-    register: '/auth/register',
+    login: '/users/login',
+    register: '/users/register',
   },
   user: {
-    profile: '/user/profile',
+    profile: '/user/me',
   },
   transaction: {
     create: '/transaction/create',
