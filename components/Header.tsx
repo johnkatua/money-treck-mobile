@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   leftIcon: {
-    width: 20,
-    height: 20,
+    alignSelf: 'flex-start',
   },
 });

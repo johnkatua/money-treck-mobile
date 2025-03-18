@@ -1,15 +1,32 @@
-import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import Header from '../../components/Header';
 import ScreenWrapper from '../../components/ScreenWrapper';
 import { colors, spacingX, spacingY } from '../../constants/theme';
 import { verticalScale } from '../../utils/styling';
-import Header from '../../components/Header';
+import Typo from '../../components/Typo';
 
 const Settings = () => {
   return (
     <ScreenWrapper>
       <View style={styles.container}>
-        <Header title="Profile" />
+        <Header title="Profile" style={{ marginVertical: spacingY._10 }} />
+        <View style={styles.userInfo}>
+          <View style={styles.avatarContainer}>
+            <View style={styles.avatar} />
+            <View style={styles.editIcon}>
+              <Text>Edit</Text>
+            </View>
+          </View>
+          <View style={styles.nameContainer}>
+            <Typo size={24} fontWeight={'600'} color={colors.neutral100}>
+              John Doe
+            </Typo>
+            <Typo size={18} color={colors.neutral400}>
+              JohnDoe@gmail.com
+            </Typo>
+          </View>
+        </View>
       </View>
     </ScreenWrapper>
   );
