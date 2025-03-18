@@ -24,6 +24,8 @@ const Register = () => {
   const handleRegister = async (values) => {
     try {
       const { data, error } = await register(values);
+      console.log('data', data);
+      console.log('error', error);
       if (error) {
         setErrorMsg('Something went wrong');
         return;
