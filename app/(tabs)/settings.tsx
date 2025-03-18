@@ -5,7 +5,11 @@ import { colors, spacingX, spacingY } from '../../constants/theme';
 import { verticalScale } from '../../utils/styling';
 
 const Settings = () => {
-  return <ScreenWrapper></ScreenWrapper>;
+  return (
+    <ScreenWrapper>
+      <View style={styles.container}></View>
+    </ScreenWrapper>
+  );
 };
 
 export default Settings;
