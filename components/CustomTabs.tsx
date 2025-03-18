@@ -12,21 +12,21 @@ const CustomTabs: FC<BottomTabBarProps> = ({ state, descriptors, navigation }) =
   const tabBarIcons = {
     index: (isFocused) => (
       <House
-        size={verticalScale(20)}
+        size={verticalScale(30)}
         color={isFocused ? colors.primary : colors.neutral400}
         weight={isFocused ? 'fill' : 'regular'}
       />
     ),
     statistics: (isFocused) => (
       <ChartBar
-        size={verticalScale(20)}
+        size={verticalScale(30)}
         color={isFocused ? colors.primary : colors.neutral400}
         weight={isFocused ? 'fill' : 'regular'}
       />
     ),
     settings: (isFocused) => (
       <User
-        size={verticalScale(20)}
+        size={verticalScale(30)}
         color={isFocused ? colors.primary : colors.neutral400}
         weight={isFocused ? 'fill' : 'regular'}
       />
