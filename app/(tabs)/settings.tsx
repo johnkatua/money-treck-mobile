@@ -10,42 +10,64 @@ import { getProfileImage } from '../../services/image_services';
 import { AccountOptions } from '../../types';
 import { CaretRight, GearSix, Lock, Power, User } from 'phosphor-react-native';
 import Animated, { FadeInDown } from 'react-native-reanimated';
+import { useAppDispatch } from '../../store/root';
+import { logout } from '../../features/auth/authSlice';
+import { useRouter } from 'expo-router';
 
+const accountOptions: AccountOptions[] = [
+  {
+    title: 'Edit Profile',
+    icon: <User size={verticalScale(26)} color={colors.neutral100} weight="fill" />,
+    routeName: '/modals/profile',
+    bgColor: '#6366f1',
+  },
+  {
+    title: 'Settings',
+    icon: <GearSix size={verticalScale(26)} color={colors.neutral100} weight="fill" />,
+    // routeName: 'Notifications',
+    bgColor: '#059669',
+  },
+  {
+    title: 'Security',
+    icon: <Lock size={verticalScale(26)} color={colors.neutral100} weight="fill" />,
+    // routeName: 'Security',
+    bgColor: colors.neutral600,
+  },
+  {
+    title: 'Logout',
+    icon: <Power size={verticalScale(26)} color={colors.neutral100} weight="fill" />,
+    // routeName: 'Help',
+    bgColor: '#e11d48',
+  },
+  // {
+  //   title: 'About',
+  //   icon: <View style={styles.listIcon} />,
+  //   routeName: 'About',
+  //   bgColor: colors.neutral600,
+  // },
+];
 const Settings = () => {
-  const accountOptions: AccountOptions[] = [
-    {
-      title: 'Edit Profile',
-      icon: <User size={verticalScale(26)} color={colors.neutral100} weight="fill" />,
-      routeName: '/modals/profile',
-      bgColor: '#6366f1',
-    },
-    {
-      title: 'Settings',
-      icon: <GearSix size={verticalScale(26)} color={colors.neutral100} weight="fill" />,
-      // routeName: 'Notifications',
-      bgColor: '#059669',
-    },
-    {
-      title: 'Security',
-      icon: <Lock size={verticalScale(26)} color={colors.neutral100} weight="fill" />,
-      // routeName: 'Security',
-      bgColor: colors.neutral600,
-    },
-    {
-      title: 'Logout',
-      icon: <Power size={verticalScale(26)} color={colors.neutral100} weight="fill" />,
-      // routeName: 'Help',
-      bgColor: '#e11d48',
-    },
-    // {
-    //   title: 'About',
-    //   icon: <View style={styles.listIcon} />,
-    //   routeName: 'About',
-    //   bgColor: colors.neutral600,
-    // },
-  ];
+  const dispatch = useAppDispatch();
+  const router = useRouter();
 
-  const showLogoutAlert = () => Alert.alert('Confirm', 'Are you sure you want to logout?');
+  const handleLogout = () => {
+    dispatch(logout());
+    router.replace('/(auth)/welcome');
+  };
+
+  const showLogoutAlert = () =>
+    Alert.alert('Confirm', 'Are you sure you want to logout?', [
+      {
+        text: 'Cancel',
+        onPress: () => console.log('Cancel Logout'),
+        style: 'cancel',
+      },
+      {
+        text: 'Logout',
+        onPress: () => handleLogout(),
+        style: 'destructive',
+      },
+    ]);
 
   const handlePress = async (title) => {
     if (title === 'Logout') showLogoutAlert();
