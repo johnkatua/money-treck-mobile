@@ -24,14 +24,6 @@ export const authApi = api.injectEndpoints({
       }),
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         await handleAuthResponse(queryFulfilled, dispatch);
-        // try {
-        //   const { data } = await queryFulfilled;
-        //   if (data) {
-        //     dispatch(authenticateUser(data.token));
-        //   }
-        // } catch (error) {
-        //   console.error('Login error:', error);
-        // }
       },
     }),
     register: builder.mutation<AuthResponse, void>({
@@ -42,14 +34,6 @@ export const authApi = api.injectEndpoints({
       }),
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         await handleAuthResponse(queryFulfilled, dispatch);
-        // try {
-        //   const { data } = await queryFulfilled;
-        //   if (data) {
-        //     dispatch(authenticateUser(data.token));
-        //   }
-        // } catch (error) {
-        //   console.error('Login error:', error);
-        // }
       },
     }),
   }),
