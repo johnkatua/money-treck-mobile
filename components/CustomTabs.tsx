@@ -4,7 +4,7 @@ import { View, Platform } from 'react-native';
 import { useLinkBuilder, useTheme } from '@react-navigation/native';
 import { Text, PlatformPressable } from '@react-navigation/elements';
 import { BottomTabBarProps, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { colors } from '../constants/theme';
+import { colors, spacingY } from '../constants/theme';
 import { verticalScale } from '../utils/styling';
 
 const CustomTabs: FC<BottomTabBarProps> = ({ state, descriptors, navigation }) => {
@@ -48,10 +48,14 @@ const CustomTabs: FC<BottomTabBarProps> = ({ state, descriptors, navigation }) =
             testID={options.tabBarButtonTestID}
             onPress={onPress}
             onLongPress={onLongPress}
-            style={{ flex: 1 }}
+            style={styles.tabBarItem}
             key={route.key}
           >
-            <Text style={{ color: isFocused ? colors.primary : colors.text }}>{label}</Text>
+            <Text
+              style={[{ color: isFocused ? colors.primary : colors.text }, styles.tabBarItemText]}
+            >
+              {label}
+            </Text>
           </TouchableOpacity>
         );
       })}
@@ -67,9 +71,19 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'space-around',
     alignItems: 'center',
-    // paddingVertical: 10,
+    borderTopColor: colors.neutral700,
+    borderWidth: 1,
     backgroundColor: colors.neutral800,
     height: Platform.OS === 'ios' ? verticalScale(73) : verticalScale(60),
     borderTopWidth: 1,
+  },
+  tabBarItem: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: Platform.OS === 'ios' ? spacingY._10 : spacingY._5,
+  },
+  tabBarItemText: {
+    fontSize: verticalScale(12),
   },
 });
