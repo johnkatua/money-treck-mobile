@@ -18,20 +18,17 @@ import { loginSchema } from '../../utils/validation';
 const Login = () => {
   const router = useRouter();
   const [secureText, setSecureText] = useState(true);
-  const [errorMsg, setErrorMsg] = useState('');
   const [login, { isLoading: isLoggingIn }] = useLoginMutation();
 
   const handleLogin = async (values) => {
     try {
       const { data, error } = await login(values);
       if (error) {
-        setErrorMsg('Something went wrong');
         Alert.alert('Error', 'Something went wrong');
         return;
       }
 
       if (!data) {
-        setErrorMsg('Invalid credentials');
         Alert.alert('Error', 'Invalid credentials');
         return;
       }
@@ -44,12 +41,6 @@ const Login = () => {
     <ScreenWrapper>
       <View style={styles.container}>
         <BackButton />
-        {/* <MTSnackbar
-          message={errorMsg}
-          visible={!!errorMsg}
-          onDismissSnackBar={() => setErrorMsg('')}
-          duration={5000}
-        /> */}
         <View style={{ gap: 5, marginTop: spacingY._20 }}>
           <Typo size={30} fontWeight={'800'}>
             Hello,
