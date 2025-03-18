@@ -5,6 +5,7 @@ import ScreenWrapper from '../../components/ScreenWrapper';
 import { colors, spacingX, spacingY } from '../../constants/theme';
 import { verticalScale } from '../../utils/styling';
 import Typo from '../../components/Typo';
+import { Image } from 'expo-image';
 
 const Settings = () => {
   return (
@@ -13,7 +14,7 @@ const Settings = () => {
         <Header title="Profile" style={{ marginVertical: spacingY._10 }} />
         <View style={styles.userInfo}>
           <View style={styles.avatarContainer}>
-            <View style={styles.avatar} />
+            <Image source={null} style={styles.avatar} contentFit="cover" transition={100} />
             <View style={styles.editIcon}>
               <Text>Edit</Text>
             </View>
