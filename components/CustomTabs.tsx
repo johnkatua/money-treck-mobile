@@ -49,8 +49,9 @@ const CustomTabs: FC<BottomTabBarProps> = ({ state, descriptors, navigation }) =
             onPress={onPress}
             onLongPress={onLongPress}
             style={{ flex: 1 }}
+            key={route.key}
           >
-            <Text style={{ color: isFocused ? colors.primary : colors.neutral800 }}>{label}</Text>
+            <Text style={{ color: isFocused ? colors.primary : colors.text }}>{label}</Text>
           </TouchableOpacity>
         );
       })}
