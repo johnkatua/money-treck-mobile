@@ -6,6 +6,7 @@ import { colors, spacingX, spacingY } from '../../constants/theme';
 import { verticalScale } from '../../utils/styling';
 import Typo from '../../components/Typo';
 import { Image } from 'expo-image';
+import { getProfileImage } from '../../services/image_services';
 
 const Settings = () => {
   return (
@@ -14,7 +15,12 @@ const Settings = () => {
         <Header title="Profile" style={{ marginVertical: spacingY._10 }} />
         <View style={styles.userInfo}>
           <View style={styles.avatarContainer}>
-            <Image source={null} style={styles.avatar} contentFit="cover" transition={100} />
+            <Image
+              source={getProfileImage(null)}
+              style={styles.avatar}
+              contentFit="cover"
+              transition={100}
+            />
             <View style={styles.editIcon}>
               <Text>Edit</Text>
             </View>
