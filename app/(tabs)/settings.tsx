@@ -8,7 +8,8 @@ import Typo from '../../components/Typo';
 import { Image } from 'expo-image';
 import { getProfileImage } from '../../services/image_services';
 import { AccountOptions } from '../../types';
-import { GearSix, Lock, Power, User } from 'phosphor-react-native';
+import { CaretRight, GearSix, Lock, Power, User } from 'phosphor-react-native';
+import Animated from 'react-native-reanimated';
 
 const Settings = () => {
   const accountOptions: AccountOptions[] = [
@@ -70,7 +71,7 @@ const Settings = () => {
         </View>
         <View style={styles.accountOptions}>
           {accountOptions.map(({ title, icon, routeName, bgColor }, idx) => (
-            <View style={styles.listItem} key={idx}>
+            <Animated.View style={styles.listItem} key={idx}>
               <TouchableOpacity style={styles.flexRow}>
                 <View
                   style={[
@@ -85,8 +86,9 @@ const Settings = () => {
                 <Typo size={16} style={{ flex: 1 }} fontWeight={'500'}>
                   {title}
                 </Typo>
+                <CaretRight size={verticalScale(20)} weight="bold" color={colors.neutral100} />
               </TouchableOpacity>
-            </View>
+            </Animated.View>
           ))}
         </View>
       </View>
