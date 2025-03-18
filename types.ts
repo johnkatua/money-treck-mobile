@@ -33,6 +33,13 @@ export type HeaderProps = {
   style?: ViewStyle;
 };
 
+export type AccountOptions = {
+  title: string;
+  icon: ReactNode;
+  routeName?: string;
+  bgColor: string;
+};
+
 export interface CustomButtonProps extends TouchableOpacityProps {
   style?: ViewStyle;
   loading?: boolean;

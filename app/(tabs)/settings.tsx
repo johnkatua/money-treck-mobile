@@ -7,8 +7,42 @@ import { verticalScale } from '../../utils/styling';
 import Typo from '../../components/Typo';
 import { Image } from 'expo-image';
 import { getProfileImage } from '../../services/image_services';
+import { AccountOptions } from '../../types';
+import { GearSix, Lock, Power, User } from 'phosphor-react-native';
 
 const Settings = () => {
+  const accountOptions: AccountOptions[] = [
+    {
+      title: 'Edit Profile',
+      icon: <User size={verticalScale(26)} color={colors.neutral100} weight="fill" />,
+      routeName: '/modals/profile',
+      bgColor: '#6366f1',
+    },
+    {
+      title: 'Settings',
+      icon: <GearSix size={verticalScale(26)} color={colors.neutral100} weight="fill" />,
+      // routeName: 'Notifications',
+      bgColor: '#059669',
+    },
+    {
+      title: 'Security',
+      icon: <Lock size={verticalScale(26)} color={colors.neutral100} weight="fill" />,
+      // routeName: 'Security',
+      bgColor: colors.neutral600,
+    },
+    {
+      title: 'Logout',
+      icon: <Power size={verticalScale(26)} color={colors.neutral100} weight="fill" />,
+      // routeName: 'Help',
+      bgColor: '#e11d48',
+    },
+    // {
+    //   title: 'About',
+    //   icon: <View style={styles.listIcon} />,
+    //   routeName: 'About',
+    //   bgColor: colors.neutral600,
+    // },
+  ];
   return (
     <ScreenWrapper>
       <View style={styles.container}>
