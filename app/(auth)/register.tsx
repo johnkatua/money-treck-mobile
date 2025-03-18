@@ -13,6 +13,7 @@ import { verticalScale } from '../../utils/styling';
 import { registerSchema } from '../../utils/validation';
 import { useRouter } from 'expo-router';
 import { useRegisterMutation } from '../../api/authApi';
+import MTSnackbar from '../../components/MTSnackbar';
 
 const Register = () => {
   const router = useRouter();
@@ -41,6 +42,12 @@ const Register = () => {
     <ScreenWrapper>
       <View style={styles.container}>
         <BackButton />
+        <MTSnackbar
+          message={errorMsg}
+          visible={!!errorMsg}
+          onDismissSnackBar={() => setErrorMsg('')}
+          duration={5000}
+        />
         <View style={{ gap: 5, marginTop: spacingY._20 }}>
           <Typo size={30} fontWeight={'800'}>
             Let's,
