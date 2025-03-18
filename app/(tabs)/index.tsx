@@ -5,6 +5,7 @@ import Button from '../../components/Button';
 import Typo from '../../components/Typo';
 import { logout } from '../../features/auth/authSlice';
 import { useAppDispatch } from '../../store/root';
+import ScreenWrapper from '../../components/ScreenWrapper';
 
 const Home = () => {
   const dispatch = useAppDispatch();
@@ -15,12 +16,12 @@ const Home = () => {
     console.log('logout');
   };
   return (
-    <View>
-      <Text>Home</Text>
+    <ScreenWrapper>
+      <Typo>Home</Typo>
       <Button onPress={handleLogout}>
         <Typo>Logout</Typo>
       </Button>
-    </View>
+    </ScreenWrapper>
   );
 };
 
