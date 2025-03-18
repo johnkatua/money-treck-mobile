@@ -1,18 +1,18 @@
+import { Image } from 'expo-image';
+import { useRouter } from 'expo-router';
+import { CaretRight, GearSix, Lock, Power, User } from 'phosphor-react-native';
 import React from 'react';
 import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import Animated, { FadeInDown } from 'react-native-reanimated';
 import Header from '../../components/Header';
 import ScreenWrapper from '../../components/ScreenWrapper';
-import { colors, radius, spacingX, spacingY } from '../../constants/theme';
-import { verticalScale } from '../../utils/styling';
 import Typo from '../../components/Typo';
-import { Image } from 'expo-image';
-import { getProfileImage } from '../../services/image_services';
-import { AccountOptions } from '../../types';
-import { CaretRight, GearSix, Lock, Power, User } from 'phosphor-react-native';
-import Animated, { FadeInDown } from 'react-native-reanimated';
-import { useAppDispatch } from '../../store/root';
+import { colors, radius, spacingX, spacingY } from '../../constants/theme';
 import { logout } from '../../features/auth/authSlice';
-import { useRouter } from 'expo-router';
+import { getProfileImage } from '../../services/image_services';
+import { useAppDispatch } from '../../store/root';
+import { AccountOptions } from '../../types';
+import { verticalScale } from '../../utils/styling';
 
 const accountOptions: AccountOptions[] = [
   {
@@ -106,7 +106,7 @@ const Settings = () => {
               style={styles.listItem}
               key={idx}
             >
-              <TouchableOpacity style={styles.flexRow}>
+              <TouchableOpacity style={styles.flexRow} onPress={() => handlePress(title)}>
                 <View
                   style={[
                     styles.listIcon,
