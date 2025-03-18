@@ -12,11 +12,31 @@ import { colors, spacingX, spacingY } from '../../constants/theme';
 import { verticalScale } from '../../utils/styling';
 import { registerSchema } from '../../utils/validation';
 import { useRouter } from 'expo-router';
+import { useRegisterMutation } from '../../api/authApi';
 
 const Register = () => {
   const router = useRouter();
   const [secureText, setSecureText] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
+  const [register, { isLoading }] = useRegisterMutation();
+
+  const handleRegister = async (values) => {
+    try {
+      const { data, error } = await register(values);
+      if (error) {
+        setErrorMsg('Something went wrong');
+        return;
+      }
+
+      if (!data) {
+        setErrorMsg('Invalid credentials');
+        return;
+      }
+      router.replace('/(tabs)');
+    } catch (error) {
+      console.error('Register error:', error);
+    }
+  };
   return (
     <ScreenWrapper>
       <View style={styles.container}>
@@ -37,7 +57,7 @@ const Register = () => {
             phoneNumber: '',
           }}
           validationSchema={registerSchema}
-          onSubmit={(values) => console.log(values)}
+          onSubmit={(values) => handleRegister(values)}
         >
           {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
             <View style={styles.form}>
