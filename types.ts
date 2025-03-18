@@ -55,6 +55,10 @@ export type LoginResponse = {
   token: string;
 };
 
+export type AuthResponse = {
+  token: string;
+};
+
 export type RegisterProps = {
   email: string;
   password: string;
