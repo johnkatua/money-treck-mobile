@@ -82,6 +82,9 @@ const Settings = () => {
                 >
                   {icon}
                 </View>
+                <Typo size={16} style={{ flex: 1 }} fontWeight={'500'}>
+                  {title}
+                </Typo>
               </TouchableOpacity>
             </View>
           ))}
@@ -152,7 +155,6 @@ const styles = StyleSheet.create({
   flexRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
     gap: spacingX._10,
   },
 });
