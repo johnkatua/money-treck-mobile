@@ -6,8 +6,32 @@ import { Text, PlatformPressable } from '@react-navigation/elements';
 import { BottomTabBarProps, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { colors, spacingY } from '../constants/theme';
 import { verticalScale } from '../utils/styling';
+import { ChartBar, House, User } from 'phosphor-react-native';
 
 const CustomTabs: FC<BottomTabBarProps> = ({ state, descriptors, navigation }) => {
+  const tabBarIcons = {
+    index: (isFocused) => (
+      <House
+        size={verticalScale(20)}
+        color={isFocused ? colors.primary : colors.neutral400}
+        weight={isFocused ? 'fill' : 'regular'}
+      />
+    ),
+    statistics: (isFocused) => (
+      <ChartBar
+        size={verticalScale(20)}
+        color={isFocused ? colors.primary : colors.neutral400}
+        weight={isFocused ? 'fill' : 'regular'}
+      />
+    ),
+    settings: (isFocused) => (
+      <User
+        size={verticalScale(20)}
+        color={isFocused ? colors.primary : colors.neutral400}
+        weight={isFocused ? 'fill' : 'regular'}
+      />
+    ),
+  };
   return (
     <View style={styles.tabBar}>
       {state.routes.map((route, index) => {
@@ -51,11 +75,7 @@ const CustomTabs: FC<BottomTabBarProps> = ({ state, descriptors, navigation }) =
             style={styles.tabBarItem}
             key={route.key}
           >
-            <Text
-              style={[{ color: isFocused ? colors.primary : colors.text }, styles.tabBarItemText]}
-            >
-              {label}
-            </Text>
+            {tabBarIcons[route.name](isFocused)}
           </TouchableOpacity>
         );
       })}
