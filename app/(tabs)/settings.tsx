@@ -1,8 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Header from '../../components/Header';
 import ScreenWrapper from '../../components/ScreenWrapper';
-import { colors, spacingX, spacingY } from '../../constants/theme';
+import { colors, radius, spacingX, spacingY } from '../../constants/theme';
 import { verticalScale } from '../../utils/styling';
 import Typo from '../../components/Typo';
 import { Image } from 'expo-image';
@@ -68,6 +68,24 @@ const Settings = () => {
             </Typo>
           </View>
         </View>
+        <View style={styles.accountOptions}>
+          {accountOptions.map(({ title, icon, routeName, bgColor }, idx) => (
+            <View style={styles.listItem} key={idx}>
+              <TouchableOpacity style={styles.flexRow}>
+                <View
+                  style={[
+                    styles.listIcon,
+                    {
+                      backgroundColor: bgColor,
+                    },
+                  ]}
+                >
+                  {icon}
+                </View>
+              </TouchableOpacity>
+            </View>
+          ))}
+        </View>
       </View>
     </ScreenWrapper>
   );
@@ -122,7 +140,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.neutral500,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: verticalScale(44) / 2,
+    borderRadius: radius._15,
     borderCurve: 'continuous',
   },
   listItem: {
