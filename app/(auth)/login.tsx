@@ -2,7 +2,7 @@ import { useRouter } from 'expo-router';
 import { Formik } from 'formik';
 import { At, Eye, EyeSlash } from 'phosphor-react-native';
 import React, { useState } from 'react';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { Alert, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { HelperText } from 'react-native-paper';
 import { useLoginMutation } from '../../api/authApi';
 import BackButton from '../../components/BackButton';
@@ -26,11 +26,13 @@ const Login = () => {
       const { data, error } = await login(values);
       if (error) {
         setErrorMsg('Something went wrong');
+        Alert.alert('Error', 'Something went wrong');
         return;
       }
 
       if (!data) {
         setErrorMsg('Invalid credentials');
+        Alert.alert('Error', 'Invalid credentials');
         return;
       }
       router.replace('/(tabs)');
@@ -42,12 +44,12 @@ const Login = () => {
     <ScreenWrapper>
       <View style={styles.container}>
         <BackButton />
-        <MTSnackbar
+        {/* <MTSnackbar
           message={errorMsg}
           visible={!!errorMsg}
           onDismissSnackBar={() => setErrorMsg('')}
           duration={5000}
-        />
+        /> */}
         <View style={{ gap: 5, marginTop: spacingY._20 }}>
           <Typo size={30} fontWeight={'800'}>
             Hello,
