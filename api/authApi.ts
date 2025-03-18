@@ -1,7 +1,7 @@
 import { api } from './rtkApi';
 import { LoginResponse, RegisterProps } from '../types';
 import { appConfig } from '../config/app-config';
-import { loginUser } from '../features/auth/authSlice';
+import { authenticateUser } from '../features/auth/authSlice';
 
 export const authApi = api.injectEndpoints({
   endpoints: (builder) => ({
@@ -15,7 +15,7 @@ export const authApi = api.injectEndpoints({
         try {
           const { data } = await queryFulfilled;
           if (data) {
-            dispatch(loginUser(data.token));
+            dispatch(authenticateUser(data.token));
           }
         } catch (error) {
           console.error('Login error:', error);
