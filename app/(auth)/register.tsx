@@ -23,16 +23,23 @@ const Register = () => {
 
   const handleRegister = async (values) => {
     try {
-      const { data, error } = await register(values);
-      console.log('data', data);
-      console.log('error', error);
+      const { data, error } = await register({
+        ...values,
+        currency: 'USD',
+        avatar: 'https://i.pravatar.cc/300',
+      });
       if (error) {
-        setErrorMsg('Something went wrong');
+        setErrorMsg(`Something went wrong: ${error}`);
         return;
       }
 
       if (!data) {
         setErrorMsg('Invalid credentials');
+        return;
+      }
+
+      if (data?.msg) {
+        setErrorMsg(data.msg);
         return;
       }
       router.replace('/(tabs)');

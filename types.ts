@@ -57,6 +57,7 @@ export type LoginResponse = {
 
 export type AuthResponse = {
   token: string;
+  msg: string;
 };
 
 export type RegisterProps = {
