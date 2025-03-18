@@ -27,6 +27,12 @@ export type TypoProps = {
   textProps?: TextProps;
 };
 
+export type HeaderProps = {
+  title?: string;
+  leftIcon?: ReactNode;
+  style?: ViewStyle;
+};
+
 export interface CustomButtonProps extends TouchableOpacityProps {
   style?: ViewStyle;
   loading?: boolean;

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Typo from './Typo';
+import { HeaderProps } from '../types';
 
-const Header = () => {
+const Header: FC<HeaderProps> = ({ title = '', leftIcon, style }) => {
   return (
     <View>
       <Typo>Header</Typo>
