@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Header from '../../components/Header';
 import ScreenWrapper from '../../components/ScreenWrapper';
 import { colors, radius, spacingX, spacingY } from '../../constants/theme';
@@ -9,7 +9,7 @@ import { Image } from 'expo-image';
 import { getProfileImage } from '../../services/image_services';
 import { AccountOptions } from '../../types';
 import { CaretRight, GearSix, Lock, Power, User } from 'phosphor-react-native';
-import Animated from 'react-native-reanimated';
+import Animated, { FadeInDown } from 'react-native-reanimated';
 
 const Settings = () => {
   const accountOptions: AccountOptions[] = [
@@ -44,6 +44,12 @@ const Settings = () => {
     //   bgColor: colors.neutral600,
     // },
   ];
+
+  const showLogoutAlert = () => Alert.alert('Confirm', 'Are you sure you want to logout?');
+
+  const handlePress = async (title) => {
+    if (title === 'Logout') showLogoutAlert();
+  };
   return (
     <ScreenWrapper>
       <View style={styles.container}>
@@ -71,7 +77,13 @@ const Settings = () => {
         </View>
         <View style={styles.accountOptions}>
           {accountOptions.map(({ title, icon, routeName, bgColor }, idx) => (
-            <Animated.View style={styles.listItem} key={idx}>
+            <Animated.View
+              entering={FadeInDown.delay(idx * 50)
+                .springify()
+                .damping(14)}
+              style={styles.listItem}
+              key={idx}
+            >
               <TouchableOpacity style={styles.flexRow}>
                 <View
                   style={[
