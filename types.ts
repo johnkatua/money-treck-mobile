@@ -40,6 +40,21 @@ export type AccountOptions = {
   bgColor: string;
 };
 
+type UserProfile = {
+  _id: string;
+  name: string;
+  email: string;
+  phoneNumber: string;
+  avatar: string;
+  currency: string;
+};
+
+export type UserProfileResponse = {
+  data: {
+    data: UserProfile;
+  };
+};
+
 export interface CustomButtonProps extends TouchableOpacityProps {
   style?: ViewStyle;
   loading?: boolean;
