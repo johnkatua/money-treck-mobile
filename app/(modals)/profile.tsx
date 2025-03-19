@@ -11,6 +11,7 @@ import { getProfileImage } from '../../services/image_services';
 import { verticalScale } from '../../utils/styling';
 import { Formik } from 'formik';
 import Input from '../../components/Input';
+import Button from '../../components/Button';
 
 const profile = () => {
   return (
@@ -22,26 +23,63 @@ const profile = () => {
           style={{ marginBottom: spacingY._10 }}
         />
         <Formik
-          initialValues={{}}
+          initialValues={{
+            name: '',
+            phoneNumber: '',
+            currency: '',
+            avatar: null,
+          }}
           validationSchema={null}
           onSubmit={(values) => console.log(values)}
         >
           {({ handleChange, handleBlur, handleSubmit, values, errors }) => (
-            <ScrollView contentContainerStyle={styles.form}>
-              <View style={styles.avatarContainer}>
-                <Image
-                  source={getProfileImage(null)}
-                  style={styles.avatar}
-                  contentFit="cover"
-                  transition={100}
-                />
-                <TouchableOpacity style={styles.editIcon}>
-                  <Pencil size={verticalScale(20)} color={colors.neutral800} />
-                </TouchableOpacity>
+            <ScrollView contentContainerStyle={styles.formContainer}>
+              <View style={styles.form}>
+                <View style={styles.avatarContainer}>
+                  <Image
+                    source={getProfileImage(values.avatar)}
+                    style={styles.avatar}
+                    contentFit="cover"
+                    transition={100}
+                  />
+                  <TouchableOpacity style={styles.editIcon}>
+                    <Pencil size={verticalScale(20)} color={colors.neutral800} />
+                  </TouchableOpacity>
+                </View>
+                <View style={styles.inputContainer}>
+                  <Typo color={colors.neutral200}>Name</Typo>
+                  <Input
+                    placeholder="Name"
+                    onChangeText={handleChange('name')}
+                    onBlur={handleBlur('name')}
+                    value={values.name}
+                  />
+                </View>
+                <View style={styles.inputContainer}>
+                  <Typo color={colors.neutral200}>Phone Number</Typo>
+                  <Input
+                    placeholder="Phone Number"
+                    onChangeText={handleChange('phoneNumber')}
+                    onBlur={handleBlur('phoneNumber')}
+                    value={values.phoneNumber}
+                  />
+                </View>
+                <View style={styles.inputContainer}>
+                  <Typo color={colors.neutral200}>Currency</Typo>
+                  <Input
+                    placeholder="Currency"
+                    onChangeText={handleChange('currency')}
+                    onBlur={handleBlur('currency')}
+                    value={values.currency}
+                  />
+                </View>
               </View>
-              <View style={styles.inputContainer}>
-                <Typo color={colors.neutral200}>Name</Typo>
-                <Input placeholder="Name" onChangeText={() => {}} onBlur={() => {}} value="" />
+              <View style={styles.footer}>
+                <Button onPress={handleSubmit} loading={false} style={{ flex: 1 }}>
+                  <Typo color={colors.black} fontWeight={'700'}>
+                    Update
+                  </Typo>
+                </Button>
               </View>
             </ScrollView>
           )}
@@ -86,6 +124,11 @@ const styles = StyleSheet.create({
     position: 'relative',
     alignSelf: 'center',
   },
+  formContainer: {
+    flex: 1,
+    // backgroundColor: 'green',
+    justifyContent: 'space-between',
+  },
   form: {
     gap: spacingY._30,
     marginTop: spacingY._15,
@@ -94,12 +137,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
-    paddingHorizontal: spacingX._20,
+    // paddingHorizontal: spacingX._20,
     gap: verticalScale(12),
     paddingTop: spacingY._15,
-    borderTopColor: colors.neutral700,
+    // borderTopColor: colors.neutral700,
     marginBottom: spacingY._5,
-    borderTopWidth: 1,
+    // borderTopWidth: 1,
   },
   container: {
     flex: 1,
