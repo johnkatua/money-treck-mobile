@@ -7,7 +7,7 @@ export const appConfig = {
     register: '/users/register',
   },
   user: {
-    profile: '/user/me',
+    profile: '/users/me',
   },
   transaction: {
     create: '/transaction/create',
