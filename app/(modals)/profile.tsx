@@ -1,7 +1,14 @@
 import { Image } from 'expo-image';
 import { Pencil } from 'phosphor-react-native';
 import React from 'react';
-import { ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
+import {
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import BackButton from '../../components/BackButton';
 import Header from '../../components/Header';
 import ModalWrapper from '../../components/ModalWrapper';
@@ -18,80 +25,90 @@ import { HelperText } from 'react-native-paper';
 const Profile = () => {
   return (
     <ModalWrapper>
-      <View style={styles.container}>
-        <Header
-          title="Update Profile"
-          leftIcon={<BackButton />}
-          style={{ marginBottom: spacingY._10 }}
-        />
-        <Formik
-          initialValues={{
-            name: '',
-            phoneNumber: '',
-            currency: '',
-            avatar: null,
-          }}
-          validationSchema={updateUserSchema}
-          onSubmit={(values) => console.log(values)}
-        >
-          {({ handleChange, handleBlur, handleSubmit, values, errors }) => (
-            <ScrollView contentContainerStyle={styles.formContainer}>
-              <View style={styles.form}>
-                <View style={styles.avatarContainer}>
-                  <Image
-                    source={getProfileImage(values.avatar)}
-                    style={styles.avatar}
-                    contentFit="cover"
-                    transition={100}
-                  />
-                  <TouchableOpacity style={styles.editIcon}>
-                    <Pencil size={verticalScale(20)} color={colors.neutral800} />
-                  </TouchableOpacity>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={{ flex: 1 }}
+      >
+        <View style={styles.container}>
+          <Header
+            title="Update Profile"
+            leftIcon={<BackButton />}
+            style={{
+              marginBottom: spacingY._10,
+            }}
+          />
+          <Formik
+            initialValues={{
+              name: '',
+              phoneNumber: '',
+              currency: '',
+              avatar: null,
+            }}
+            validationSchema={updateUserSchema}
+            onSubmit={(values) => console.log(values)}
+          >
+            {({ handleChange, handleBlur, handleSubmit, values, errors }) => (
+              <ScrollView
+                contentContainerStyle={styles.formContainer}
+                keyboardShouldPersistTaps="handled"
+              >
+                <View style={styles.form}>
+                  <View style={styles.avatarContainer}>
+                    <Image
+                      source={getProfileImage(values.avatar)}
+                      style={styles.avatar}
+                      contentFit="cover"
+                      transition={100}
+                    />
+                    <TouchableOpacity style={styles.editIcon}>
+                      <Pencil size={verticalScale(20)} color={colors.neutral800} />
+                    </TouchableOpacity>
+                  </View>
+                  <View style={styles.inputContainer}>
+                    <Typo color={colors.neutral200}>Name *</Typo>
+                    <Input
+                      placeholder="Name"
+                      onChangeText={handleChange('name')}
+                      onBlur={handleBlur('name')}
+                      value={values.name}
+                    />
+                    {errors.name && <HelperText type="error">* {errors.name}</HelperText>}
+                  </View>
+                  <View style={styles.inputContainer}>
+                    <Typo color={colors.neutral200}>Phone Number *</Typo>
+                    <Input
+                      placeholder="Phone Number"
+                      onChangeText={handleChange('phoneNumber')}
+                      onBlur={handleBlur('phoneNumber')}
+                      value={values.phoneNumber}
+                    />
+                    {errors.phoneNumber && (
+                      <HelperText type="error">* {errors.phoneNumber}</HelperText>
+                    )}
+                  </View>
+                  <View style={styles.inputContainer}>
+                    <Typo color={colors.neutral200}>Currency *</Typo>
+                    <Input
+                      placeholder="Currency"
+                      onChangeText={handleChange('currency')}
+                      onBlur={handleBlur('currency')}
+                      value={values.currency}
+                    />
+                    {errors.currency && <HelperText type="error">* {errors.currency}</HelperText>}
+                  </View>
                 </View>
-                <View style={styles.inputContainer}>
-                  <Typo color={colors.neutral200}>Name *</Typo>
-                  <Input
-                    placeholder="Name"
-                    onChangeText={handleChange('name')}
-                    onBlur={handleBlur('name')}
-                    value={values.name}
-                  />
-                  {errors.name && <HelperText type="error">* {errors.name}</HelperText>}
+                <View style={styles.footer}>
+                  <Button onPress={handleSubmit} loading={false} style={{ flex: 1 }}>
+                    <Typo color={colors.black} fontWeight={'700'}>
+                      Update
+                    </Typo>
+                  </Button>
                 </View>
-                <View style={styles.inputContainer}>
-                  <Typo color={colors.neutral200}>Phone Number *</Typo>
-                  <Input
-                    placeholder="Phone Number"
-                    onChangeText={handleChange('phoneNumber')}
-                    onBlur={handleBlur('phoneNumber')}
-                    value={values.phoneNumber}
-                  />
-                  {errors.phoneNumber && (
-                    <HelperText type="error">* {errors.phoneNumber}</HelperText>
-                  )}
-                </View>
-                <View style={styles.inputContainer}>
-                  <Typo color={colors.neutral200}>Currency *</Typo>
-                  <Input
-                    placeholder="Currency"
-                    onChangeText={handleChange('currency')}
-                    onBlur={handleBlur('currency')}
-                    value={values.currency}
-                  />
-                  {errors.currency && <HelperText type="error">* {errors.currency}</HelperText>}
-                </View>
-              </View>
-              <View style={styles.footer}>
-                <Button onPress={handleSubmit} loading={false} style={{ flex: 1 }}>
-                  <Typo color={colors.black} fontWeight={'700'}>
-                    Update
-                  </Typo>
-                </Button>
-              </View>
-            </ScrollView>
-          )}
-        </Formik>
-      </View>
+              </ScrollView>
+            )}
+          </Formik>
+        </View>
+      </KeyboardAvoidingView>
     </ModalWrapper>
   );
 };
@@ -132,10 +149,9 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   formContainer: {
-    flex: 1,
-    backgroundColor: 'green',
-    overflowY: 'scroll',
     justifyContent: 'space-between',
+    paddingBottom: spacingY._20,
+    height: 'auto',
   },
   form: {
     gap: spacingY._30,
@@ -156,5 +172,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between',
     paddingHorizontal: spacingX._20,
+    overflow: 'visible',
   },
 });
