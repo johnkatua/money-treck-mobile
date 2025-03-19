@@ -69,8 +69,9 @@ const Settings = () => {
       },
     ]);
 
-  const handlePress = async (title) => {
+  const handlePress = async (title, routeName) => {
     if (title === 'Logout') showLogoutAlert();
+    if (routeName) router.push(routeName);
   };
   return (
     <ScreenWrapper>
@@ -106,7 +107,10 @@ const Settings = () => {
               style={styles.listItem}
               key={idx}
             >
-              <TouchableOpacity style={styles.flexRow} onPress={() => handlePress(title)}>
+              <TouchableOpacity
+                style={styles.flexRow}
+                onPress={() => handlePress(title, routeName)}
+              >
                 <View
                   style={[
                     styles.listIcon,
