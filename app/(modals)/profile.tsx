@@ -1,7 +1,6 @@
-import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 import { colors, spacingY } from '../../constants/theme';
-import { Avatar } from 'react-native-paper';
 import { verticalScale } from '../../utils/styling';
 
 const profile = () => {
