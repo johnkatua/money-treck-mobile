@@ -21,8 +21,26 @@ import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { updateUserSchema } from '../../utils/validation';
 import { HelperText } from 'react-native-paper';
+import { useGetUserQuery, useUpdateUserMutation } from '../../api/userApi';
+import { extractUserProfile } from '../../services/response_service';
+import { useRouter } from 'expo-router';
 
 const Profile = () => {
+  const router = useRouter();
+  const { data: user, refetch } = useGetUserQuery();
+  const [updateUser, { isLoading }] = useUpdateUserMutation();
+
+  const handleUpdate = async (values) => {
+    try {
+      const { data, error } = await updateUser(values);
+      router.back();
+      refetch();
+    } catch (error) {
+      console.error('Update error:', error);
+    }
+  };
+
+  const userProfile = extractUserProfile(user);
   return (
     <ModalWrapper>
       <KeyboardAvoidingView
@@ -39,10 +57,10 @@ const Profile = () => {
           />
           <Formik
             initialValues={{
-              name: '',
-              phoneNumber: '',
-              currency: '',
-              avatar: null,
+              name: userProfile?.name,
+              phoneNumber: userProfile?.phoneNumber,
+              currency: userProfile?.currency,
+              avatar: userProfile?.avatar,
             }}
             validationSchema={updateUserSchema}
             onSubmit={(values) => console.log(values)}
@@ -98,7 +116,7 @@ const Profile = () => {
                   </View>
                 </View>
                 <View style={styles.footer}>
-                  <Button onPress={handleSubmit} loading={false} style={{ flex: 1 }}>
+                  <Button onPress={handleSubmit} loading={isLoading} style={{ flex: 1 }}>
                     <Typo color={colors.black} fontWeight={'700'}>
                       Update
                     </Typo>
