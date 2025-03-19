@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { colors, spacingY } from '../../constants/theme';
+import { colors, spacingX, spacingY } from '../../constants/theme';
 import { verticalScale } from '../../utils/styling';
 
 const profile = () => {
@@ -45,5 +45,25 @@ const styles = StyleSheet.create({
   avatarContainer: {
     position: 'relative',
     alignSelf: 'center',
+  },
+  form: {
+    gap: spacingY._30,
+    marginTop: spacingY._15,
+  },
+  footer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    paddingHorizontal: spacingX._20,
+    gap: verticalScale(12),
+    paddingTop: spacingY._15,
+    borderTopColor: colors.neutral700,
+    marginBottom: spacingY._5,
+    borderTopWidth: 1,
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'space-between',
+    paddingHorizontal: spacingY._20,
   },
 });
