@@ -1,13 +1,21 @@
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import ModalWrapper from '../../components/ModalWrapper';
 import { colors, spacingX, spacingY } from '../../constants/theme';
 import { verticalScale } from '../../utils/styling';
+import Header from '../../components/Header';
+import BackButton from '../../components/BackButton';
 
 const profile = () => {
   return (
     <ModalWrapper>
-      <Text>profile</Text>
+      <View style={styles.container}>
+        <Header
+          title="Update Profile"
+          leftIcon={<BackButton />}
+          style={{ marginBottom: spacingY._10 }}
+        />
+      </View>
     </ModalWrapper>
   );
 };
@@ -65,6 +73,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'space-between',
-    paddingHorizontal: spacingY._20,
+    // paddingHorizontal: spacingY._20,
   },
 });
