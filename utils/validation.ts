@@ -11,3 +11,9 @@ export const registerSchema = Yup.object().shape({
   password: Yup.string().required(),
   phoneNumber: Yup.string().required(),
 });
+
+export const updateUserSchema = Yup.object().shape({
+  name: Yup.string().required(),
+  phoneNumber: Yup.string().required(),
+  currency: Yup.string().required(),
+});
