@@ -23,7 +23,7 @@ const _layout = () => {
             <Stack.Screen
               name="(modals)/profile"
               options={{
-                presentation: 'modal',
+                presentation: 'formSheet',
               }}
             />
           </Stack>

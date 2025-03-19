@@ -25,3 +25,5 @@ export const initializeAppConfig = async () => {
     console.error('Error:', error);
   }
 };
+
+initializeAppConfig();

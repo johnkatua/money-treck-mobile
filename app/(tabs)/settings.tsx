@@ -18,7 +18,7 @@ const accountOptions: AccountOptions[] = [
   {
     title: 'Edit Profile',
     icon: <User size={verticalScale(26)} color={colors.neutral100} weight="fill" />,
-    routeName: '/modals/profile',
+    routeName: '/(modals)/profile',
     bgColor: '#6366f1',
   },
   {
