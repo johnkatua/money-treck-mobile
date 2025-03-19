@@ -1,14 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
+import ModalWrapper from '../../components/ModalWrapper';
 import { colors, spacingX, spacingY } from '../../constants/theme';
 import { verticalScale } from '../../utils/styling';
-import ScreenWrapper from '../../components/ScreenWrapper';
 
 const profile = () => {
   return (
-    <ScreenWrapper>
+    <ModalWrapper>
       <Text>profile</Text>
-    </ScreenWrapper>
+    </ModalWrapper>
   );
 };
 
