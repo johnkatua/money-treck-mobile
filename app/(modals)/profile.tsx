@@ -12,6 +12,8 @@ import { verticalScale } from '../../utils/styling';
 import { Formik } from 'formik';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+import { updateUserSchema } from '../../utils/validation';
+import { HelperText } from 'react-native-paper';
 
 const profile = () => {
   return (
@@ -29,7 +31,7 @@ const profile = () => {
             currency: '',
             avatar: null,
           }}
-          validationSchema={null}
+          validationSchema={updateUserSchema}
           onSubmit={(values) => console.log(values)}
         >
           {({ handleChange, handleBlur, handleSubmit, values, errors }) => (
@@ -47,13 +49,14 @@ const profile = () => {
                   </TouchableOpacity>
                 </View>
                 <View style={styles.inputContainer}>
-                  <Typo color={colors.neutral200}>Name</Typo>
+                  <Typo color={colors.neutral200}>Name *</Typo>
                   <Input
                     placeholder="Name"
                     onChangeText={handleChange('name')}
                     onBlur={handleBlur('name')}
                     value={values.name}
                   />
+                  {errors.name && <HelperText type="error">* {errors.name}</HelperText>}
                 </View>
                 <View style={styles.inputContainer}>
                   <Typo color={colors.neutral200}>Phone Number</Typo>
@@ -63,6 +66,9 @@ const profile = () => {
                     onBlur={handleBlur('phoneNumber')}
                     value={values.phoneNumber}
                   />
+                  {errors.phoneNumber && (
+                    <HelperText type="error">* {errors.phoneNumber}</HelperText>
+                  )}
                 </View>
                 <View style={styles.inputContainer}>
                   <Typo color={colors.neutral200}>Currency</Typo>
@@ -72,6 +78,7 @@ const profile = () => {
                     onBlur={handleBlur('currency')}
                     value={values.currency}
                   />
+                  {errors.currency && <HelperText type="error">* {errors.currency}</HelperText>}
                 </View>
               </View>
               <View style={styles.footer}>
