@@ -40,7 +40,7 @@ export type AccountOptions = {
   bgColor: string;
 };
 
-type UserProfile = {
+export type UserProfile = {
   _id: string;
   name: string;
   email: string;

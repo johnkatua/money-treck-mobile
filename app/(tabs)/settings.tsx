@@ -93,6 +93,11 @@ const Settings = () => {
             <Typo size={24} fontWeight={'600'} color={colors.neutral100}>
               {user?.data?.data?.name}
             </Typo>
+            {user.data.data.phoneNumber && (
+              <Typo size={18} color={colors.neutral400}>
+                {user?.data?.data?.phoneNumber}
+              </Typo>
+            )}
             <Typo size={18} color={colors.neutral400}>
               {user?.data?.data?.email}
             </Typo>
