@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import ModalWrapper from '../../components/ModalWrapper';
 import { colors, spacingX, spacingY } from '../../constants/theme';
 import { verticalScale } from '../../utils/styling';
@@ -15,6 +15,9 @@ const profile = () => {
           leftIcon={<BackButton />}
           style={{ marginBottom: spacingY._10 }}
         />
+        <ScrollView contentContainerStyle={styles.form}>
+          <View style={styles.avatarContainer}></View>
+        </ScrollView>
       </View>
     </ModalWrapper>
   );
@@ -73,6 +76,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'space-between',
-    // paddingHorizontal: spacingY._20,
+    paddingHorizontal: spacingX._5,
   },
 });
