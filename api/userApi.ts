@@ -9,7 +9,19 @@ export const userApi = api.injectEndpoints({
       }),
       providesTags: () => [{ type: 'User' }],
     }),
+    updateUser: builder.mutation<void, void>({
+      query: (body) => ({
+        url: appConfig.user.profile,
+        method: 'PUT',
+        body,
+      }),
+      invalidatesTags: () => [
+        {
+          type: 'User',
+        },
+      ],
+    }),
   }),
 });
 
-export const { useGetUserQuery } = userApi;
+export const { useGetUserQuery, useUpdateUserMutation } = userApi;
