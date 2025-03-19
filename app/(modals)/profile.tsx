@@ -15,7 +15,7 @@ import Button from '../../components/Button';
 import { updateUserSchema } from '../../utils/validation';
 import { HelperText } from 'react-native-paper';
 
-const profile = () => {
+const Profile = () => {
   return (
     <ModalWrapper>
       <View style={styles.container}>
@@ -59,7 +59,7 @@ const profile = () => {
                   {errors.name && <HelperText type="error">* {errors.name}</HelperText>}
                 </View>
                 <View style={styles.inputContainer}>
-                  <Typo color={colors.neutral200}>Phone Number</Typo>
+                  <Typo color={colors.neutral200}>Phone Number *</Typo>
                   <Input
                     placeholder="Phone Number"
                     onChangeText={handleChange('phoneNumber')}
@@ -71,7 +71,7 @@ const profile = () => {
                   )}
                 </View>
                 <View style={styles.inputContainer}>
-                  <Typo color={colors.neutral200}>Currency</Typo>
+                  <Typo color={colors.neutral200}>Currency *</Typo>
                   <Input
                     placeholder="Currency"
                     onChangeText={handleChange('currency')}
@@ -96,7 +96,7 @@ const profile = () => {
   );
 };
 
-export default profile;
+export default Profile;
 
 const styles = StyleSheet.create({
   inputContainer: {
@@ -133,7 +133,8 @@ const styles = StyleSheet.create({
   },
   formContainer: {
     flex: 1,
-    // backgroundColor: 'green',
+    backgroundColor: 'green',
+    overflowY: 'scroll',
     justifyContent: 'space-between',
   },
   form: {
