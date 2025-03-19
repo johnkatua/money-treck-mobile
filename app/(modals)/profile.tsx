@@ -2,12 +2,13 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { colors, spacingX, spacingY } from '../../constants/theme';
 import { verticalScale } from '../../utils/styling';
+import ScreenWrapper from '../../components/ScreenWrapper';
 
 const profile = () => {
   return (
-    <View>
+    <ScreenWrapper>
       <Text>profile</Text>
-    </View>
+    </ScreenWrapper>
   );
 };
 
