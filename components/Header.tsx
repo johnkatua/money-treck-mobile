@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Typo from './Typo';
 import { HeaderProps } from '../types';
+import { spacingY } from '../constants/theme';
 
 const Header: FC<HeaderProps> = ({ title = '', leftIcon, style }) => {
   return (
@@ -27,7 +28,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 20,
+    paddingVertical: spacingY._20,
   },
   title: {
     textAlign: 'center',

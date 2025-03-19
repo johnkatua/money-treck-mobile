@@ -1,10 +1,14 @@
+import { Image } from 'expo-image';
+import { Pencil } from 'phosphor-react-native';
 import React from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import ModalWrapper from '../../components/ModalWrapper';
-import { colors, spacingX, spacingY } from '../../constants/theme';
-import { verticalScale } from '../../utils/styling';
-import Header from '../../components/Header';
+import { ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
 import BackButton from '../../components/BackButton';
+import Header from '../../components/Header';
+import ModalWrapper from '../../components/ModalWrapper';
+import Typo from '../../components/Typo';
+import { colors, spacingX, spacingY } from '../../constants/theme';
+import { getProfileImage } from '../../services/image_services';
+import { verticalScale } from '../../utils/styling';
 
 const profile = () => {
   return (
@@ -16,7 +20,20 @@ const profile = () => {
           style={{ marginBottom: spacingY._10 }}
         />
         <ScrollView contentContainerStyle={styles.form}>
-          <View style={styles.avatarContainer}></View>
+          <View style={styles.avatarContainer}>
+            <Image
+              source={getProfileImage(null)}
+              style={styles.avatar}
+              contentFit="cover"
+              transition={100}
+            />
+            <TouchableOpacity style={styles.editIcon}>
+              <Pencil size={verticalScale(20)} color={colors.neutral800} />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.inputContainer}>
+            <Typo color={colors.neutral200}>Name</Typo>
+          </View>
         </ScrollView>
       </View>
     </ModalWrapper>
@@ -61,6 +78,7 @@ const styles = StyleSheet.create({
   form: {
     gap: spacingY._30,
     marginTop: spacingY._15,
+    backgroundColor: 'green',
   },
   footer: {
     alignItems: 'center',
@@ -76,6 +94,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'space-between',
-    paddingHorizontal: spacingX._5,
+    paddingHorizontal: spacingX._20,
+    backgroundColor: 'black',
   },
 });
