@@ -14,6 +14,7 @@ import { useAppDispatch } from '../../store/root';
 import { AccountOptions } from '../../types';
 import { verticalScale } from '../../utils/styling';
 import { useGetUserQuery } from '../../api/userApi';
+import { extractUserProfile } from '../../services/response_service';
 
 const accountOptions: AccountOptions[] = [
   {
@@ -75,7 +76,7 @@ const Settings = () => {
     if (title === 'Logout') showLogoutAlert();
     if (routeName) router.push(routeName);
   };
-  console.log({ userOne: user });
+  const userProfile = extractUserProfile(user);
   return (
     <ScreenWrapper>
       <View style={styles.container}>
@@ -83,7 +84,7 @@ const Settings = () => {
         <View style={styles.userInfo}>
           <View style={styles.avatarContainer}>
             <Image
-              source={getProfileImage(user?.data?.data.avatar)}
+              source={getProfileImage(userProfile?.avatar)}
               style={styles.avatar}
               contentFit="cover"
               transition={100}
@@ -91,15 +92,15 @@ const Settings = () => {
           </View>
           <View style={styles.nameContainer}>
             <Typo size={24} fontWeight={'600'} color={colors.neutral100}>
-              {user?.data?.data?.name}
+              {userProfile?.name}
             </Typo>
             {user.data.data.phoneNumber && (
               <Typo size={18} color={colors.neutral400}>
-                {user?.data?.data?.phoneNumber}
+                {userProfile?.phoneNumber}
               </Typo>
             )}
             <Typo size={18} color={colors.neutral400}>
-              {user?.data?.data?.email}
+              {userProfile?.email}
             </Typo>
           </View>
         </View>
