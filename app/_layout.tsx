@@ -19,7 +19,14 @@ const _layout = () => {
               gestureEnabled: true,
               gestureDirection: 'horizontal',
             }}
-          ></Stack>
+          >
+            <Stack.Screen
+              name="(modals)/profile"
+              options={{
+                presentation: 'modal',
+              }}
+            />
+          </Stack>
         </PersistGate>
       </Provider>
     </PaperProvider>
