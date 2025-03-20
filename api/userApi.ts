@@ -20,7 +20,11 @@ export const userApi = api.injectEndpoints({
         return {
           url: appConfig.user.profile,
           method: 'PUT',
-          body,
+          headers: {
+            'Content-Type': 'multipart/form-data;',
+          },
+          body: { formData },
+          formData: true,
         };
       },
       invalidatesTags: () => [
