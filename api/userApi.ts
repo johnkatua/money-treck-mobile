@@ -1,5 +1,5 @@
 import { appConfig } from '../config/app-config';
-import { ApiResponse, UserProfileResponse } from '../types';
+import { ApiResponse, UserProfile, UserProfileResponse } from '../types';
 import { api } from './rtkApi';
 
 export const userApi = api.injectEndpoints({
@@ -10,8 +10,13 @@ export const userApi = api.injectEndpoints({
       }),
       providesTags: () => [{ type: 'User' }],
     }),
-    updateUser: builder.mutation<ApiResponse, void>({
+    updateUser: builder.mutation<ApiResponse, UserProfile>({
       query: (body) => {
+        let formData = new FormData();
+        formData.append('name', body.name);
+        formData.append('phoneNumber', body.phoneNumber);
+        formData.append('currency', body.currency);
+        formData.append('avatar', body.avatar);
         return {
           url: appConfig.user.profile,
           method: 'PUT',
