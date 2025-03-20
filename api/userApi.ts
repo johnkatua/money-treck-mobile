@@ -11,11 +11,13 @@ export const userApi = api.injectEndpoints({
       providesTags: () => [{ type: 'User' }],
     }),
     updateUser: builder.mutation<ApiResponse, void>({
-      query: (body) => ({
-        url: appConfig.user.profile,
-        method: 'PUT',
-        body,
-      }),
+      query: (body) => {
+        return {
+          url: appConfig.user.profile,
+          method: 'PUT',
+          body,
+        };
+      },
       invalidatesTags: () => [
         {
           type: 'User',
