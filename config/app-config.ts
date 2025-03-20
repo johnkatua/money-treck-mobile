@@ -1,13 +1,14 @@
 import * as Network from 'expo-network';
 
 export const appConfig = {
-  apiBaseUrl: 'http://10.4.21.23:8002/api',
+  apiBaseUrl: 'http://192.168.100.56:8002/api',
   auth: {
     login: '/users/login',
     register: '/users/register',
   },
   user: {
     profile: '/users/me',
+    update: '/users',
   },
   transaction: {
     create: '/transaction/create',

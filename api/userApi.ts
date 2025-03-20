@@ -18,7 +18,7 @@ export const userApi = api.injectEndpoints({
         formData.append('currency', body.currency);
         formData.append('avatar', body.avatar);
         return {
-          url: appConfig.user.profile,
+          url: appConfig.user.update,
           method: 'PUT',
           headers: {
             'Content-Type': 'multipart/form-data;',
