@@ -88,6 +88,11 @@ export type AuthResponse = {
   msg: string;
 };
 
+export type ApiResponse = {
+  msg: string;
+  data: any;
+};
+
 export type RegisterProps = {
   email: string;
   password: string;

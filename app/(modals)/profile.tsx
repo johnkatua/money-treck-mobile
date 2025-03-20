@@ -2,6 +2,7 @@ import { Image } from 'expo-image';
 import { Pencil } from 'phosphor-react-native';
 import React from 'react';
 import {
+  Alert,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
@@ -33,6 +34,15 @@ const Profile = () => {
   const handleUpdate = async (values) => {
     try {
       const { data, error } = await updateUser(values);
+      if (error) {
+        Alert.alert('Error', 'Something went wrong ' + error);
+        return;
+      }
+
+      if (data.msg !== 'User updated successfully') {
+        Alert.alert('Error', data.msg);
+        return;
+      }
       router.back();
       refetch();
     } catch (error) {
