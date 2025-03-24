@@ -35,7 +35,8 @@ const Profile = () => {
     try {
       const { data, error } = await updateUser(values);
       if (error) {
-        Alert.alert('Error', 'Something went wrong ' + error);
+        console.log(error);
+        Alert.alert('Error', 'Something went wrong ' + error.error);
         return;
       }
 
@@ -73,7 +74,7 @@ const Profile = () => {
               avatar: userProfile?.avatar,
             }}
             validationSchema={updateUserSchema}
-            onSubmit={(values) => console.log(values)}
+            onSubmit={(values) => handleUpdate(values)}
           >
             {({ handleChange, handleBlur, handleSubmit, values, errors }) => (
               <ScrollView

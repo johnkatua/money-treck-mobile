@@ -12,19 +12,18 @@ export const userApi = api.injectEndpoints({
     }),
     updateUser: builder.mutation<ApiResponse, UserProfile>({
       query: (body) => {
+        console.log(body);
         let formData = new FormData();
         formData.append('name', body.name);
         formData.append('phoneNumber', body.phoneNumber);
         formData.append('currency', body.currency);
-        formData.append('avatar', body.avatar);
+        if (body.avatar) {
+          formData.append('avatar', body.avatar);
+        }
         return {
           url: appConfig.user.update,
           method: 'PUT',
-          headers: {
-            'Content-Type': 'multipart/form-data;',
-          },
-          body: { formData },
-          formData: true,
+          body: formData,
         };
       },
       invalidatesTags: () => [
