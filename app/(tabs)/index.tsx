@@ -5,6 +5,7 @@ import Typo from '../../components/Typo';
 import { useGetUserQuery } from '../../api/userApi';
 import { colors, spacingX, spacingY } from '../../constants/theme';
 import Header from '../../components/Header';
+import { verticalScale } from '../../utils/styling';
 
 const Home = () => {
   const { data: user } = useGetUserQuery();
@@ -26,7 +27,16 @@ const Home = () => {
           />
         </View>
         <ScrollView contentContainerStyle={styles.contentContainer}>
-          <View style={{ height: 900 }}>
+          <View
+            style={{
+              marginTop: spacingY._20,
+            }}
+          >
+            <Typo size={18} fontWeight={'600'} color={colors.neutral100}>
+              Welcome John
+            </Typo>
+          </View>
+          <View style={styles.metricsCard}>
             <Text>Hello</Text>
           </View>
         </ScrollView>
@@ -44,5 +54,10 @@ const styles = StyleSheet.create({
   contentContainer: {
     paddingHorizontal: spacingX._10,
     height: 'auto',
+    gap: verticalScale(20),
+  },
+  metricsCard: {
+    backgroundColor: colors.neutral800,
+    padding: 10,
   },
 });
