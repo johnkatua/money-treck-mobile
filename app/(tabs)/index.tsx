@@ -6,10 +6,12 @@ import { useGetUserQuery } from '../../api/userApi';
 import { colors, spacingX, spacingY } from '../../constants/theme';
 import Header from '../../components/Header';
 import { verticalScale } from '../../utils/styling';
+import { extractUserProfile } from '../../services/response_service';
 
 const Home = () => {
   const { data: user } = useGetUserQuery();
   console.log({ user });
+  const userProfile = extractUserProfile(user);
   return (
     <ScreenWrapper>
       <View style={styles.container}>
@@ -33,7 +35,7 @@ const Home = () => {
             }}
           >
             <Typo size={18} fontWeight={'600'} color={colors.neutral100}>
-              Welcome John
+              Welcome, {userProfile?.name.split(' ')[0]}
             </Typo>
           </View>
           <View style={styles.metricsCard}>
