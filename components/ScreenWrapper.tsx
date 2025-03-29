@@ -7,7 +7,7 @@ import { colors } from '../constants/theme';
 const ScreenWrapper: FC<ScreenContainerProps> = ({ style, children }) => {
   const paddingTop = Platform.OS === 'ios' ? SCREEN_HEIGHT * 0.06 : 50;
   return (
-    <ScrollView
+    <View
       style={[
         {
           paddingTop,
@@ -18,7 +18,7 @@ const ScreenWrapper: FC<ScreenContainerProps> = ({ style, children }) => {
       ]}
     >
       {children}
-    </ScrollView>
+    </View>
   );
 };
 

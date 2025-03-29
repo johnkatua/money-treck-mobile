@@ -1,9 +1,9 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Typo from '../../components/Typo';
 import { useGetUserQuery } from '../../api/userApi';
-import { spacingX } from '../../constants/theme';
+import { spacingX, spacingY } from '../../constants/theme';
 import Header from '../../components/Header';
 
 const Home = () => {
@@ -12,7 +12,26 @@ const Home = () => {
   return (
     <ScreenWrapper>
       <View style={styles.container}>
-        <Header title="Home" />
+        <View
+          style={{
+            position: 'fixed',
+            backgroundColor: 'green',
+          }}
+        >
+          <Header
+            title="Home"
+            style={{
+              marginBottom: spacingY._10,
+            }}
+          />
+        </View>
+        <View>
+          <ScrollView contentContainerStyle={styles.contentContainer}>
+            <View style={{ height: 900 }}>
+              <Text>Hello</Text>
+            </View>
+          </ScrollView>
+        </View>
       </View>
     </ScreenWrapper>
   );
@@ -24,5 +43,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: spacingX._20,
+  },
+  contentContainer: {
+    height: 'auto',
+    backgroundColor: 'red',
+    flex: 1,
   },
 });
