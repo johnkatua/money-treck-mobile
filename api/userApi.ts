@@ -12,7 +12,6 @@ export const userApi = api.injectEndpoints({
     }),
     updateUser: builder.mutation<ApiResponse, UserProfile>({
       query: (body) => {
-        console.log(body);
         let formData = new FormData();
         formData.append('name', body.name);
         formData.append('phoneNumber', body.phoneNumber);
