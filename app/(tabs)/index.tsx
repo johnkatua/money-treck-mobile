@@ -3,7 +3,7 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Typo from '../../components/Typo';
 import { useGetUserQuery } from '../../api/userApi';
-import { spacingX, spacingY } from '../../constants/theme';
+import { colors, spacingX, spacingY } from '../../constants/theme';
 import Header from '../../components/Header';
 
 const Home = () => {
@@ -14,8 +14,8 @@ const Home = () => {
       <View style={styles.container}>
         <View
           style={{
-            position: 'fixed',
-            backgroundColor: 'green',
+            borderBottomColor: colors.neutral700,
+            borderWidth: 1,
           }}
         >
           <Header
@@ -25,13 +25,11 @@ const Home = () => {
             }}
           />
         </View>
-        <View>
-          <ScrollView contentContainerStyle={styles.contentContainer}>
-            <View style={{ height: 900 }}>
-              <Text>Hello</Text>
-            </View>
-          </ScrollView>
-        </View>
+        <ScrollView contentContainerStyle={styles.contentContainer}>
+          <View style={{ height: 900 }}>
+            <Text>Hello</Text>
+          </View>
+        </ScrollView>
       </View>
     </ScreenWrapper>
   );
@@ -42,11 +40,9 @@ export default Home;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: spacingX._20,
   },
   contentContainer: {
+    paddingHorizontal: spacingX._10,
     height: 'auto',
-    backgroundColor: 'red',
-    flex: 1,
   },
 });
