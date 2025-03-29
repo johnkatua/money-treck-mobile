@@ -36,7 +36,7 @@ const Profile = () => {
       const { data, error } = await updateUser(values);
       if (error) {
         console.log(error);
-        Alert.alert('Error', 'Something went wrong ' + error.error);
+        Alert.alert('Error', 'Something went wrong ' + error);
         return;
       }
 
@@ -190,12 +190,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
-    // paddingHorizontal: spacingX._20,
     gap: verticalScale(12),
     paddingTop: spacingY._15,
-    // borderTopColor: colors.neutral700,
     marginBottom: spacingY._5,
-    // borderTopWidth: 1,
   },
   container: {
     flex: 1,
