@@ -49,6 +49,13 @@ export type TopExpenditureItems = {
   bgColor: string;
 };
 
+export type ScreenOptions = {
+  name: string;
+  options?: {
+    presentation: string;
+  };
+};
+
 export type UserProfile = {
   _id: string;
   name: string;
