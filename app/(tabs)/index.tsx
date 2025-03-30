@@ -3,12 +3,13 @@ import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-nati
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Typo from '../../components/Typo';
 import { useGetUserQuery } from '../../api/userApi';
-import { colors, spacingX, spacingY } from '../../constants/theme';
+import { colors, radius, spacingX, spacingY } from '../../constants/theme';
 import Header from '../../components/Header';
 import { verticalScale } from '../../utils/styling';
 import { extractUserProfile } from '../../services/response_service';
 import { CategoryOptions } from '../../types';
-import { Calculator, CreditCard, CurrencyDollar, Money } from 'phosphor-react-native';
+import { Calculator, CaretRight, CreditCard, CurrencyDollar, Money } from 'phosphor-react-native';
+import Animated, { FadeInDown } from 'react-native-reanimated';
 
 const categoryOptions: CategoryOptions[] = [
   {
@@ -75,14 +76,45 @@ const Home = () => {
               Ksh. 15,000
             </Typo>
           </View>
-          <Typo size={18} fontWeight={'600'} color={colors.neutral100}>
+          <Typo
+            size={18}
+            fontWeight={'600'}
+            color={colors.neutral100}
+            style={{
+              marginTop: verticalScale(30),
+            }}
+          >
             Categories
           </Typo>
-          <View>
-            {['Revenue', 'Expenses', 'Budget'].map((item) => (
-              <TouchableOpacity>
-                <View></View>
-              </TouchableOpacity>
+          <View style={styles.categoryOptions}>
+            {categoryOptions.map(({ title, icon, routeName, bgColor }, idx) => (
+              <Animated.View
+                entering={FadeInDown.delay(idx * 50)
+                  .springify()
+                  .damping(14)}
+                style={styles.listItem}
+                key={idx}
+              >
+                <TouchableOpacity
+                  style={styles.flexRow}
+                  // onPress={() => handlePress(title, routeName)}
+                >
+                  <View
+                    style={[
+                      styles.listIcon,
+                      {
+                        backgroundColor: bgColor,
+                      },
+                    ]}
+                  >
+                    {icon}
+                  </View>
+                  <Typo size={16} style={{ flex: 1 }} fontWeight={'500'}>
+                    {title}
+                  </Typo>
+                  <CaretRight size={verticalScale(20)} weight="bold" color={colors.neutral100} />
+                </TouchableOpacity>
+              </Animated.View>
             ))}
           </View>
         </ScrollView>
@@ -107,5 +139,25 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: colors.neutral800,
     padding: 20,
+  },
+  categoryOptions: {
+    marginTop: verticalScale(17),
+  },
+  listIcon: {
+    height: verticalScale(44),
+    width: verticalScale(44),
+    backgroundColor: colors.neutral500,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: radius._15,
+    borderCurve: 'continuous',
+  },
+  listItem: {
+    marginBottom: verticalScale(17),
+  },
+  flexRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacingX._10,
   },
 });
