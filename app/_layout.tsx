@@ -48,12 +48,9 @@ const _layout = () => {
               gestureDirection: 'horizontal',
             }}
           >
-            <Stack.Screen
-              name="(modals)/profile"
-              options={{
-                presentation: 'modal',
-              }}
-            />
+            {screenOptions?.map((screen) => (
+              <Stack.Screen name={screen.name} options={screen.options} />
+            ))}
           </Stack>
         </PersistGate>
       </Provider>

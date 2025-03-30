@@ -7,6 +7,7 @@ import {
   TouchableOpacityProps,
   ViewStyle,
 } from 'react-native';
+import type { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 
 type WrapperProps = {
   style?: ViewStyle;
@@ -52,7 +53,7 @@ export type TopExpenditureItems = {
 export type ScreenOptions = {
   name: string;
   options?: {
-    presentation: string;
+    presentation: NativeStackNavigationOptions['presentation'];
   };
 };
 
