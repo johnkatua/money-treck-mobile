@@ -1,4 +1,5 @@
-import { Dimensions, PixelRatio } from 'react-native';
+import { Dimensions, PixelRatio, StyleSheet } from 'react-native';
+import { spacingX } from '../constants/theme';
 
 export const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 
@@ -17,3 +18,12 @@ export const verticalScale = (size: number) =>
   Math.round(
     PixelRatio.roundToNearestPixel(((longDimension / guidelineBaseHeight) * size) as number)
   );
+
+export const modalStyles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'space-between',
+    paddingHorizontal: spacingX._20,
+    overflow: 'visible',
+  },
+});
