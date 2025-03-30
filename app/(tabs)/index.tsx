@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Typo from '../../components/Typo';
 import { useGetUserQuery } from '../../api/userApi';
@@ -39,7 +39,28 @@ const Home = () => {
             </Typo>
           </View>
           <View style={styles.metricsCard}>
-            <Text>Hello</Text>
+            <Typo
+              size={20}
+              fontWeight={'600'}
+              style={{
+                marginBottom: spacingY._20,
+              }}
+            >
+              Total Revenue
+            </Typo>
+            <Typo size={24} fontWeight={'bold'}>
+              Ksh. 15,000
+            </Typo>
+          </View>
+          <Typo size={18} fontWeight={'600'} color={colors.neutral100}>
+            Categories
+          </Typo>
+          <View>
+            {['Revenue', 'Expenses', 'Budget'].map((item) => (
+              <TouchableOpacity>
+                <View></View>
+              </TouchableOpacity>
+            ))}
           </View>
         </ScrollView>
       </View>
@@ -59,7 +80,9 @@ const styles = StyleSheet.create({
     gap: verticalScale(20),
   },
   metricsCard: {
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: colors.neutral800,
-    padding: 10,
+    padding: 20,
   },
 });
