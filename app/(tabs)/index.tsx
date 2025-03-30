@@ -53,6 +53,27 @@ const topExpenditureItems: TopExpenditureItems[] = [
   },
 ];
 
+const topRevenueItems: TopExpenditureItems[] = [
+  {
+    title: 'Salary',
+    icon: <Money size={verticalScale(26)} color={colors.neutral100} weight="fill" />,
+    value: 45000,
+    bgColor: '#6366f1',
+  },
+  {
+    title: 'Business',
+    icon: <Money size={verticalScale(26)} color={colors.neutral100} weight="fill" />,
+    value: 15000,
+    bgColor: '#6366f1',
+  },
+  {
+    title: 'Side Hustle',
+    icon: <Money size={verticalScale(26)} color={colors.neutral100} weight="fill" />,
+    value: 9000,
+    bgColor: '#6366f1',
+  },
+];
+
 const Home = () => {
   const { data: user } = useGetUserQuery();
   const userProfile = extractUserProfile(user);
@@ -93,7 +114,7 @@ const Home = () => {
               Total Revenue
             </Typo>
             <Typo size={24} fontWeight={'bold'}>
-              Ksh. 15,000
+              Ksh. 150,000
             </Typo>
           </View>
           <Typo
@@ -145,6 +166,49 @@ const Home = () => {
               marginTop: verticalScale(30),
             }}
           >
+            Top Revenue Items
+          </Typo>
+          <View style={styles.categoryOptions}>
+            {topRevenueItems.map(({ title, icon, value, bgColor }, idx) => (
+              <Animated.View
+                entering={FadeInDown.delay(idx * 50)
+                  .springify()
+                  .damping(14)}
+                style={styles.listItem}
+                key={idx}
+              >
+                <TouchableOpacity
+                  style={styles.flexRow}
+                  // onPress={() => handlePress(title, routeName)}
+                >
+                  <View
+                    style={[
+                      styles.listIcon,
+                      {
+                        backgroundColor: bgColor,
+                      },
+                    ]}
+                  >
+                    {icon}
+                  </View>
+                  <Typo size={16} style={{ flex: 1 }} fontWeight={'500'}>
+                    {title}
+                  </Typo>
+                  <Typo size={20} fontWeight={'bold'} color={colors.neutral100}>
+                    Ksh. {value}
+                  </Typo>
+                </TouchableOpacity>
+              </Animated.View>
+            ))}
+          </View>
+          <Typo
+            size={18}
+            fontWeight={'600'}
+            color={colors.neutral100}
+            style={{
+              marginTop: verticalScale(30),
+            }}
+          >
             Top Expenditure Items
           </Typo>
           <View style={styles.categoryOptions}>
@@ -174,9 +238,8 @@ const Home = () => {
                     {title}
                   </Typo>
                   <Typo size={20} fontWeight={'bold'} color={colors.neutral100}>
-                    {value}
+                    Ksh. {value}
                   </Typo>
-                  {/* <CaretRight size={verticalScale(20)} weight="bold" color={colors.neutral100} /> */}
                 </TouchableOpacity>
               </Animated.View>
             ))}
