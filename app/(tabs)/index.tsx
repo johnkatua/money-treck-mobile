@@ -10,24 +10,25 @@ import { extractUserProfile } from '../../services/response_service';
 import { CategoryOptions, TopExpenditureItems } from '../../types';
 import { Calculator, CaretRight, CreditCard, CurrencyDollar, Money } from 'phosphor-react-native';
 import Animated, { FadeInDown } from 'react-native-reanimated';
+import { useRouter } from 'expo-router';
 
 const categoryOptions: CategoryOptions[] = [
   {
     title: 'Revenue',
     icon: <Money size={verticalScale(26)} color={colors.neutral100} weight="fill" />,
-    routeName: '',
+    routeName: '/(modals)/revenue_list',
     bgColor: '#6366f1',
   },
   {
     title: 'Expenses',
     icon: <CreditCard size={verticalScale(26)} color={colors.neutral100} weight="fill" />,
-    routeName: '',
+    routeName: '/(modals)/expenditure_list',
     bgColor: '#059669',
   },
   {
     title: 'Budget',
     icon: <Calculator size={verticalScale(26)} color={colors.neutral100} weight="fill" />,
-    routeName: '',
+    routeName: '/(modals)/budget_list',
     bgColor: '#e11d48',
   },
 ];
@@ -75,8 +76,13 @@ const topRevenueItems: TopExpenditureItems[] = [
 ];
 
 const Home = () => {
+  const router = useRouter();
   const { data: user } = useGetUserQuery();
   const userProfile = extractUserProfile(user);
+
+  const handlePress = async (routeName) => {
+    if (routeName) router.push(routeName);
+  };
   return (
     <ScreenWrapper>
       <View style={styles.container}>
@@ -136,10 +142,7 @@ const Home = () => {
                 style={styles.listItem}
                 key={idx}
               >
-                <TouchableOpacity
-                  style={styles.flexRow}
-                  // onPress={() => handlePress(title, routeName)}
-                >
+                <TouchableOpacity style={styles.flexRow} onPress={() => handlePress(routeName)}>
                   <View
                     style={[
                       styles.listIcon,
