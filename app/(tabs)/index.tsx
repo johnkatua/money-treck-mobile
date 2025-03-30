@@ -32,7 +32,7 @@ const categoryOptions: CategoryOptions[] = [
   },
 ];
 
-const topExpenditureItems: TopExpenditureItems = [
+const topExpenditureItems: TopExpenditureItems[] = [
   {
     title: 'Food',
     icon: <CreditCard size={verticalScale(26)} color={colors.neutral100} weight="fill" />,
@@ -147,6 +147,40 @@ const Home = () => {
           >
             Top Expenditure Items
           </Typo>
+          <View style={styles.categoryOptions}>
+            {topExpenditureItems.map(({ title, icon, value, bgColor }, idx) => (
+              <Animated.View
+                entering={FadeInDown.delay(idx * 50)
+                  .springify()
+                  .damping(14)}
+                style={styles.listItem}
+                key={idx}
+              >
+                <TouchableOpacity
+                  style={styles.flexRow}
+                  // onPress={() => handlePress(title, routeName)}
+                >
+                  <View
+                    style={[
+                      styles.listIcon,
+                      {
+                        backgroundColor: bgColor,
+                      },
+                    ]}
+                  >
+                    {icon}
+                  </View>
+                  <Typo size={16} style={{ flex: 1 }} fontWeight={'500'}>
+                    {title}
+                  </Typo>
+                  <Typo size={20} fontWeight={'bold'} color={colors.neutral100}>
+                    {value}
+                  </Typo>
+                  {/* <CaretRight size={verticalScale(20)} weight="bold" color={colors.neutral100} /> */}
+                </TouchableOpacity>
+              </Animated.View>
+            ))}
+          </View>
         </ScrollView>
       </View>
     </ScreenWrapper>
