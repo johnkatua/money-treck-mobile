@@ -7,7 +7,7 @@ import { colors, radius, spacingX, spacingY } from '../../constants/theme';
 import Header from '../../components/Header';
 import { verticalScale } from '../../utils/styling';
 import { extractUserProfile } from '../../services/response_service';
-import { CategoryOptions } from '../../types';
+import { CategoryOptions, TopExpenditureItems } from '../../types';
 import { Calculator, CaretRight, CreditCard, CurrencyDollar, Money } from 'phosphor-react-native';
 import Animated, { FadeInDown } from 'react-native-reanimated';
 
@@ -32,9 +32,29 @@ const categoryOptions: CategoryOptions[] = [
   },
 ];
 
+const topExpenditureItems: TopExpenditureItems = [
+  {
+    title: 'Food',
+    icon: <CreditCard size={verticalScale(26)} color={colors.neutral100} weight="fill" />,
+    value: 4500,
+    bgColor: '#059669',
+  },
+  {
+    title: 'Transport',
+    icon: <CreditCard size={verticalScale(26)} color={colors.neutral100} weight="fill" />,
+    value: 3000,
+    bgColor: '#059669',
+  },
+  {
+    title: 'Internet',
+    icon: <CreditCard size={verticalScale(26)} color={colors.neutral100} weight="fill" />,
+    value: 2000,
+    bgColor: '#059669',
+  },
+];
+
 const Home = () => {
   const { data: user } = useGetUserQuery();
-  console.log({ user });
   const userProfile = extractUserProfile(user);
   return (
     <ScreenWrapper>
@@ -117,6 +137,16 @@ const Home = () => {
               </Animated.View>
             ))}
           </View>
+          <Typo
+            size={18}
+            fontWeight={'600'}
+            color={colors.neutral100}
+            style={{
+              marginTop: verticalScale(30),
+            }}
+          >
+            Top Expenditure Items
+          </Typo>
         </ScrollView>
       </View>
     </ScreenWrapper>

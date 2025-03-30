@@ -42,6 +42,13 @@ export type AccountOptions = {
 
 export type CategoryOptions = AccountOptions;
 
+export type TopExpenditureItems = {
+  title: string;
+  icon: ReactNode;
+  value: number;
+  bgColor: string;
+};
+
 export type UserProfile = {
   _id: string;
   name: string;
