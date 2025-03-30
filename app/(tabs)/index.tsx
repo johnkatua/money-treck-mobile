@@ -7,6 +7,29 @@ import { colors, spacingX, spacingY } from '../../constants/theme';
 import Header from '../../components/Header';
 import { verticalScale } from '../../utils/styling';
 import { extractUserProfile } from '../../services/response_service';
+import { CategoryOptions } from '../../types';
+import { Calculator, CreditCard, CurrencyDollar, Money } from 'phosphor-react-native';
+
+const categoryOptions: CategoryOptions[] = [
+  {
+    title: 'Revenue',
+    icon: <Money size={verticalScale(26)} color={colors.neutral100} weight="fill" />,
+    routeName: '',
+    bgColor: '#6366f1',
+  },
+  {
+    title: 'Expenses',
+    icon: <CreditCard size={verticalScale(26)} color={colors.neutral100} weight="fill" />,
+    routeName: '',
+    bgColor: '#059669',
+  },
+  {
+    title: 'Budget',
+    icon: <Calculator size={verticalScale(26)} color={colors.neutral100} weight="fill" />,
+    routeName: '',
+    bgColor: '#e11d48',
+  },
+];
 
 const Home = () => {
   const { data: user } = useGetUserQuery();
