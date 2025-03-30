@@ -32,6 +32,7 @@ export type HeaderProps = {
   title?: string;
   leftIcon?: ReactNode;
   style?: ViewStyle;
+  rightIcon?: ReactNode;
 };
 
 export type AccountOptions = {

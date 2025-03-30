@@ -4,7 +4,7 @@ import Typo from './Typo';
 import { HeaderProps } from '../types';
 import { spacingY } from '../constants/theme';
 
-const Header: FC<HeaderProps> = ({ title = '', leftIcon, style }) => {
+const Header: FC<HeaderProps> = ({ title = '', leftIcon, style, rightIcon }) => {
   return (
     <View style={[styles.container, style]}>
       {leftIcon && <View style={styles.leftIcon}>{leftIcon}</View>}
@@ -17,6 +17,7 @@ const Header: FC<HeaderProps> = ({ title = '', leftIcon, style }) => {
           {title}
         </Typo>
       )}
+      {rightIcon && <View style={styles.rightIcon}>{rightIcon}</View>}
     </View>
   );
 };
@@ -35,5 +36,8 @@ const styles = StyleSheet.create({
   },
   leftIcon: {
     alignSelf: 'flex-start',
+  },
+  rightIcon: {
+    alignSelf: 'flex-end',
   },
 });
